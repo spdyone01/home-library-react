@@ -1,0 +1,11 @@
+.book {
+    width: 150px;
+    height: 200px;
+}
+
+.book:hover img{
+    transition: ease-in-out;
+    transition: all;
+    transition: 0.2s;
+    transform:rotateY(90deg);
+}
