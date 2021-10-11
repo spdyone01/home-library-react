@@ -1,13 +1,14 @@
 import React from 'react';
+import BookCard from './BookCard';
 
 class Content extends React.Component {
     render() {
         return (
             <div>
-                Content
+            <BookCard book={this.props.book} />
             </div>
         )
-    }
+    } 
 }
 
 export default Content;

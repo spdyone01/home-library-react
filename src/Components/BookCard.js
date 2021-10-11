@@ -14,13 +14,12 @@ class BookCard extends React.Component {
                   <Card.Description>
                     {this.props.book.synopsis}
                   </Card.Description>
-                </Card.Content>
+                </Card.Content> 
                 <Card.Content extra>
-                  <a>
+                  <div>
                     <Icon name='book' /> <div>Pages: {this.props.book.pageCount}</div>
                     <div>ISBN: {this.props.book.ISBN}</div>
-
-                  </a>
+                  </div>
                 </Card.Content>
               </Card>
           </div>  

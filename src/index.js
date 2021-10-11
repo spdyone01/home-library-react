@@ -8,7 +8,13 @@ import faker from 'faker';
 import BookCard from './Components/BookCard';
 import User from './Components/User';
 import SidePanel from './Components/SidePanel';
-import Content from './Components/Content'
+import Content from './Components/Content';
+
+// Stylesheets
+import './styles/Header.css';
+import './styles/Footer.css';
+import './styles/AppWrapper.css';
+import './styles/Index.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -22,9 +28,9 @@ class App extends React.Component {
                         title: 'Where the Red Fern Grows',
                         ISBN: '23f2220asdf0930',
                         author: 'Wilson Rawls',
-                        synopsis: 'A tale of a boy and his two hounds',
+                        synopsis: 'The story of two dogs and a boy',
                         pageCount: 188,
-                        bookImgSrc: `${faker.internet.avatar()}`
+                        bookImgSrc: './media/Where_the_red_fern_grows.jpg'
                     },
                     {
                         title: 'Harry Potter and the Sorcerers Stone',
@@ -40,15 +46,17 @@ class App extends React.Component {
     
     render() {
         return (
-            <div class='container'>
-                <header>
+            <div className='container'>
+                <header className='header'>
                     <div class='title'>{this.state.user.name}'s Library</div>
                 </header>
-                <User user={this.state.user} />
-                <SidePanel isLoggedIn={this.state.user.isLoggedIn} />
-                <Content />
-                <BookCard book={this.state.user.books[0]} />
-                <footer>Created by Trevor Widdison - WiddiWebs</footer>
+                <div className='app-wrapper'>
+                    <User user={this.state.user} className='side-panel user-info'/>
+                    <SidePanel isLoggedIn={this.state.user.isLoggedIn} className='side-panel'/>
+                    <Content book={this.state.user.books[0]} />
+                    
+                </div>
+                <footer className='footer'>Created by Trevor Widdison - WiddiWebs</footer>
             </div>
         );
     }

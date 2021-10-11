@@ -1,21 +1,24 @@
 import React from 'react';
 
+// Styles
+import '../styles/SidePanel.css';
+
 class SidePanel extends React.Component {
 
     render() {
         return (
-            <div className='side panel'>
-                <div><a>My Library</a></div>
+            <div className='side-panel'>
+                <div>My Library</div>
                 <ul>
-                    <li><a>Collections</a></li>
-                    <li><a>Reading</a></li>
-                    <li><a>Favorites</a></li>
-                    <li><a>Wishlist</a></li>
-                    <li><a>Read History</a></li>
+                    <li>Collections</li>
+                    <li>Reading</li>
+                    <li>Favorites</li>
+                    <li>Wishlist</li>
+                    <li>Read History</li>
                 </ul>
-
+ 
                 <div>
-                    <button>{this.props.isLoggedIn ? 'Logout' : 'Login'}</button>
+                    <button className='login-button'>{this.props.isLoggedIn ? 'Logout' : 'Login'}</button>
                 </div>
             </div>
         )

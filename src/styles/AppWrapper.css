@@ -1,0 +1,26 @@
+.app-wrapper {
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.user-info {
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
+
+.side-panel {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+img {
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+
+
+

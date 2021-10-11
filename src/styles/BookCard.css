@@ -1,6 +1,7 @@
 .book {
     width: 150px;
-    height: 200px;
+    height: 300px;
+    overflow: hidden;
 }
 
 .book:hover img{
