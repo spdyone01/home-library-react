@@ -15,6 +15,7 @@ import HomePage from './Components/HomePage';
 import { BrowserRouter, NavLink } from 'react-router-dom';
 
 // Stylesheets
+import './styles/styles.scss';
 // import './styles/Header.css';
 // import './styles/Footer.css';
 // import './styles/AppWrapper.css';
@@ -53,10 +54,11 @@ class App extends React.Component {
     render() {
         return (
             <div className='container'>
-            <BrowserRouter basename='/'>
                 <p>index page</p>
-            </BrowserRouter>
-            <footer className='footer'>Created by Trevor Widdison - WiddiWebs</footer>
+                <PublicHomePage />
+                <div className='footer'>
+                    <footer>Created by Trevor Widdison - WiddiWebs</footer>
+                </div>
             </div>
         );
     };

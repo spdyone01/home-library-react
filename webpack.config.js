@@ -11,10 +11,17 @@ module.exports = {
     },
     mode: 'development',
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.m?js$/,
-                use: "babel-loader"
+                use: "babel-loader",
+                exclude: /node_modules/
+            },{
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     }
