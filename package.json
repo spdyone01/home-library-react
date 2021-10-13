@@ -30,7 +30,7 @@
     "webpack-dev-server": "^4.3.1"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "serve": "live-server public/",
     "dev-server": "webpack-dev-server"
   },

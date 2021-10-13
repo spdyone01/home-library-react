@@ -7,7 +7,7 @@ import 'normalize.css/normalize.css';
 
 // Components for app
 import PublicHomePage from './Components/PublicHomePage';
-import HomePage from './Components/HomePage';
+// import HomePage from './Components/HomePage';
 // import { Redirect } from 'react-router';
 // import { BrowserRouter, NavLink } from 'react-router-dom';
 
