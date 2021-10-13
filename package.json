@@ -31,6 +31,7 @@
   },
   "scripts": {
     "build": "webpack --watch",
+    "netlify-build": "webpack",
     "serve": "live-server public/",
     "dev-server": "webpack-dev-server"
   },
