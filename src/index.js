@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'normalize.css/normalize.css';
 
 // Libraries for testing purposes
 // import faker from 'faker';
@@ -7,21 +8,11 @@ import ReactDOM from 'react-dom';
 // Components for app
 import PublicHomePage from './Components/PublicHomePage';
 import HomePage from './Components/HomePage';
-// import BookCard from './Components/BookCard';
-// import User from './Components/User';
-// import SidePanel from './Components/SidePanel';
-// import Content from './Components/Content';
 // import { Redirect } from 'react-router';
-import { BrowserRouter, NavLink } from 'react-router-dom';
+// import { BrowserRouter, NavLink } from 'react-router-dom';
 
 // Stylesheets
 import './styles/styles.scss';
-// import './styles/Header.css';
-// import './styles/Footer.css';
-// import './styles/AppWrapper.css';
-// import './styles/Index.css';
-
-console.log('index.js is working');
 
 class App extends React.Component {
     constructor(props) {
@@ -54,7 +45,6 @@ class App extends React.Component {
     render() {
         return (
             <div className='container'>
-                <p>index page</p>
                 <PublicHomePage />
                 <div className='footer'>
                     <footer>Created by Trevor Widdison - WiddiWebs</footer>
