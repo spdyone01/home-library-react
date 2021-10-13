@@ -1,6 +1,5 @@
 .public-home-page-container {
-    position: relative;
-    top: 2rem;
+    flex-grow: 1;
 }
 
 .logo-container {
@@ -8,7 +7,9 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
-    margin-right: 60px;
+    margin-right: 40px;
+    margin-top: 0;
+    padding-top: 3rem;
 }
 
 .title {
@@ -71,11 +72,12 @@
 }
 
 .reg-message p {
-    margin-top: 2rem;
+    margin: 1rem 0 0;
 }
 
 .reg-link {
-    display: block;
+    display: flex;
+    justify-content: center;
     color: blue;
     text-decoration: none;
 }

@@ -7,6 +7,7 @@ import 'normalize.css/normalize.css';
 
 // Components for app
 import PublicHomePage from './Components/PublicHomePage';
+import Footer from './Components/Footer';
 // import HomePage from './Components/HomePage';
 // import { Redirect } from 'react-router';
 // import { BrowserRouter, NavLink } from 'react-router-dom';
@@ -21,7 +22,7 @@ class App extends React.Component {
             user: {
                 name: `Bob`,
                 email: 'test@gmail.com',
-                pass: 'pass1', 
+                pass: 'pass1',
                 books: [{
                     title: 'Where the Red Fern Grows',
                     ISBN: '23f2220asdf0930',
@@ -41,14 +42,12 @@ class App extends React.Component {
             }
         };
     };
-    
+
     render() {
         return (
             <div className='container'>
                 <PublicHomePage />
-                <div className='footer'>
-                    <footer>Created by Trevor Widdison - WiddiWebs</footer>
-                </div>
+                <Footer />
             </div>
         );
     };

@@ -37,6 +37,7 @@ class PublicHomePage extends React.Component {
                 </div>
                 <div className='reg-message'>
                     <p>Don't have an account?</p>
+                    <br />
                     <p><a className='reg-link' href='/'>Register</a></p>
                 </div>
             </div> 
