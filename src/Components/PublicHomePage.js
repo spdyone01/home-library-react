@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PublicHomePage extends React.Component {
 
@@ -38,7 +39,7 @@ class PublicHomePage extends React.Component {
                 <div className='reg-message'>
                     <p>Don't have an account?</p>
                     <br />
-                    <p><a className='reg-link' href='/'>Register</a></p>
+                    <Link to='registration'>Register</Link>
                 </div>
             </div> 
         )
