@@ -2,7 +2,7 @@ import React from "react";
 
 function Registration(props) {
   return (
-    <div>
+    <div className='registration-container'>
       <p>Registration Component</p>
     </div>
   );

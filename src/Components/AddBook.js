@@ -2,7 +2,7 @@ import React from "react";
 
 function AddBook(props) {
   return (
-    <div>
+    <div className='addbook-container'>
       <p>AddBook Component</p>
     </div>
   );

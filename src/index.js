@@ -89,7 +89,6 @@ class App extends React.Component {
               <HomePage user={this.state.user}/>
             </Route>
             <Route exact path="/registration">
-              <NavBar />
               <Registration />
             </Route>
             <Route exact path="/collections">

@@ -21,7 +21,7 @@ class PublicHomePage extends React.Component {
         return (
             <div className='public-home-page-container'>
                 <div className='logo-container'>
-                    <img id='logo' src='../media/HomePageLogo.svg' alt='hi' width='200'></img>
+                    <img id='logo' src='../media/HomePageLogo.svg' alt='Home Page Logo' width='200'></img>
                 </div>
                 <div className='title'>
                     <h3>My Home Library</h3>

@@ -1,0 +1,43 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.navbar-container nav {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-content: center;
+}
+
+.navbar-container ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-content: center;
+}
+
+li {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: black;
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}

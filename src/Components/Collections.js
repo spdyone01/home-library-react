@@ -2,7 +2,7 @@ import React from "react";
 
 function Collections(props) {
   return (
-    <div>
+    <div className='collections-container'>
       <p>Collections Component</p>
     </div>
   );
