@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { connect } from 'react-redux';
 import "normalize.css/normalize.css";
 // import { Switch } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
@@ -8,47 +9,71 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 // import faker from 'faker';
 
 // Components for app
-import AddBook from "./Components/AddBook";
-import Collections from "./Components/Collections";
-import EditBook from "./Components/EditBook";
-import Favorites from "./Components/Favorites";
-import Footer from "./Components/Footer";
-import HomePage from "./Components/HomePage";
-import NavBar from "./Components/NavBar";
-import PublicHomePage from "./Components/PublicHomePage";
-import Registration from "./Components/Registration";
+import AddBook from "./components/AddBook";
+import BookForm from "./components/BookForm";
+import Collections from "./components/Collections";
+import EditBook from "./components/EditBook";
+import Favorites from "./components/Favorites";
+import Footer from "./components/Footer";
+import HomePage from "./components/HomePage";
+import NavBar from "./components/NavBar";
+import PublicHomePage from "./components/PublicHomePage";
+import Registration from "./components/Registration";
+
+
 
 // Stylesheets
 import "./styles/styles.scss";
+import WishList from "./components/WishList";
+import { getDefaultNormalizer } from "@testing-library/dom";
+
+/*************************************************************
+*
+*   TEST DATA
+*
+**************************************************************/
+
+
+
+const testUser = {
+    // name: faker.name.firstName(),
+    email: 'test@gmail.com', // test user on database
+    pass: 'pass1234',  // test user pass on database
+    books: [ 9780316333528, 9781408894620, 9780152547684 ],
+    isLoggedIn: false
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {
-        name: `Bob`,
-        email: "test@gmail.com",
-        pass: "pass1",
-        books: [
-          {
-            title: "Where the Red Fern Grows",
-            ISBN: "23f2220asdf0930",
-            author: "Wilson Rawls",
-            synopsis: "The story of two dogs and a boy",
-            pageCount: 188,
-            bookImgSrc: "./media/Where_the_red_fern_grows.jpg"
-          },
-          {
-            title: "Harry Potter and the Sorcerers Stone",
-            ISBN: "asdf88a8ef383j",
-            author: "J.K. Rowling",
-            bookImgSrc: `/#}`
-          }
-        ],
-        avatar: `/#}`,
-        isLoggedIn: true
+        name: ``,
+        email: "",
+        books: [],
+        isLoggedIn: false
       }
     };
+  }
+  
+  // This is so if the user backs or navs to this page then they'll have to re-login.
+  logoutUser = () => {
+    this.setState(() => ({
+        user: { 
+            name: '',
+            email: '',
+            books: [],
+            isLoggedIn: false }
+    }))
+    /* 
+    *
+    *   Logout of google, disconnect from firebase, etc...
+    * 
+    */
+  }
+
+  componentDidMount() {
+      this.logoutUser();
   }
 
   render() {
@@ -57,11 +82,11 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/">
-              <PublicHomePage />
+              <PublicHomePage user={this.state.user}/>
             </Route>
             <Route exact path="/home">
               <NavBar />
-              <HomePage />
+              <HomePage user={this.state.user}/>
             </Route>
             <Route exact path="/registration">
               <NavBar />
@@ -71,7 +96,7 @@ class App extends React.Component {
               <NavBar />
               <Collections />
             </Route>
-            <Route exact path="/addbook">
+            <Route path="/addbook">
               <NavBar />
               <AddBook />
             </Route>
@@ -81,7 +106,7 @@ class App extends React.Component {
             </Route>
             <Route exact path="/wishlist">
               <NavBar />
-              <PublicHomePage />
+              <WishList />
             </Route>
             <Route exact path="/favorites">
               <NavBar />

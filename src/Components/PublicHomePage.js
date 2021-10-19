@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class PublicHomePage extends React.Component {
+
+    handleLoginSubmit = (e) => {
+        e.preventDefault();
+
+        // If valid login then either create user or retrieve user info
+        // if(user) { this.setState(() => { user }) }
+        // else { this.setState((data) => { name, email, books, etc.... })}
+        // After setting user data then change path to home
+        this.props.history.push('/home');
+        
+        // If invalid login then display error message/prompt
+        
+    }
 
     render() {
         return (
@@ -13,7 +27,10 @@ class PublicHomePage extends React.Component {
                     <h3>My Home Library</h3>
                 </div>
                 <div className='login-form'>
-                    <form id='login'>
+                    <form 
+                        id='login' 
+                        onSubmit={this.handleLoginSubmit}
+                        >
                         <input 
                             className='input'
                             id='email'
@@ -46,4 +63,4 @@ class PublicHomePage extends React.Component {
     }
 }
 
-export default PublicHomePage;
+export default withRouter(PublicHomePage);
