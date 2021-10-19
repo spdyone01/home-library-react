@@ -9,22 +9,22 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 // import faker from 'faker';
 
 // Components for app
-import AddBook from "./components/AddBook";
-import BookForm from "./components/BookForm";
-import Collections from "./components/Collections";
-import EditBook from "./components/EditBook";
-import Favorites from "./components/Favorites";
-import Footer from "./components/Footer";
-import HomePage from "./components/HomePage";
-import NavBar from "./components/NavBar";
-import PublicHomePage from "./components/PublicHomePage";
-import Registration from "./components/Registration";
+import AddBook from "./Components/AddBook";
+import BookForm from "./Components/BookForm";
+import Collections from "./Components/Collections";
+import EditBook from "./Components/EditBook";
+import Favorites from "./Components/Favorites";
+import Footer from "./Components/Footer";
+import HomePage from "./Components/HomePage";
+import NavBar from "./Components/NavBar";
+import PublicHomePage from "./Components/PublicHomePage";
+import Registration from "./Components/Registration";
 
 
 
 // Stylesheets
 import "./styles/styles.scss";
-import WishList from "./components/WishList";
+import WishList from "./Components/WishList";
 import { getDefaultNormalizer } from "@testing-library/dom";
 
 /*************************************************************
