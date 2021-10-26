@@ -2,20 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import configureStore from "./store/configureStore";
-import { connect } from 'react-redux';
 import "normalize.css/normalize.css";
 // import { Switch } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-
-// Import Actions
-import { setTextFilter } from "./actions/filters";
 
 // Libraries for testing purposes
 // import faker from 'faker';
 
 // Components for app
 import AddBook from "./Components/AddBook";
-import BookForm from "./Components/BookForm";
 import Collections from "./Components/Collections";
 import EditBook from "./Components/EditBook";
 import Favorites from "./Components/Favorites";
@@ -24,6 +19,7 @@ import HomePage from "./Components/HomePage";
 import NavBar from "./Components/NavBar";
 import PublicHomePage from "./Components/PublicHomePage";
 import Registration from "./Components/Registration";
+import SearchBar from "./Components/SearchBar";
 
 const store = configureStore();
 const state = store.getState();
@@ -36,22 +32,6 @@ store.subscribe(() => {
 // Stylesheets
 import "./styles/styles.scss";
 import WishList from "./Components/WishList";
-
-/*************************************************************
-*
-*   TEST DATA
-*
-**************************************************************/
-
-
-
-const testUser = {
-    // name: faker.name.firstName(),
-    email: 'test@gmail.com', // test user on database
-    pass: 'pass1234',  // test user pass on database
-    books: [ 9780316333528, 9781408894620, 9780152547684 ],
-    isLoggedIn: false
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -96,6 +76,7 @@ class App extends React.Component {
             </Route>
             <Route exact path="/home">
               <NavBar />
+              <SearchBar placeholder='Search Library' />
               <HomePage user={this.state.user}/>
             </Route>
             <Route exact path="/registration">
@@ -103,10 +84,12 @@ class App extends React.Component {
             </Route>
             <Route exact path="/collections">
               <NavBar />
+              <SearchBar placeholder='Search Collections' />
               <Collections />
             </Route>
             <Route path="/addbook">
               <NavBar />
+              <SearchBar placeholder='Search for a book' />
               <AddBook />
             </Route>
             <Route path="/editbook">
@@ -115,10 +98,12 @@ class App extends React.Component {
             </Route>
             <Route exact path="/wishlist">
               <NavBar />
+              <SearchBar placeholder='Search Wishlist' />
               <WishList />
             </Route>
             <Route exact path="/favorites">
               <NavBar />
+              <SearchBar placeholder='Search Favorites' />
               <Favorites />
             </Route>
           </Switch>

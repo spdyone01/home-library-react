@@ -20,5 +20,5 @@ const getSearchResults = (query, searchAttributes) => {
 
 // Cover search result function
 const getCover = (isbn, searchAttributes) => {
-
+    console.log('getCover')
 }

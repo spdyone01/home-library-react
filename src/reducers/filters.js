@@ -34,7 +34,17 @@ export default (state = filtersReducerDefaultState, action) => {
         case 'SORT_BY_AUTHOR':
             return {
                 ...state,
-                sortBy: 'title'
+                sortBy: 'author'
+            }
+        case 'SET_LIST_VIEW':
+            return {
+                ...state,
+                view: 'list'
+            }
+        case 'SET_TILE_VIEW':
+            return {
+                ...state,
+                view: 'tile'
             }
         default: 
             return state;
