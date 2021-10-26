@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from 'react-redux';
+import configureStore from "./store/configureStore";
 import { connect } from 'react-redux';
 import "normalize.css/normalize.css";
 // import { Switch } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+// Import Actions
+import { setTextFilter } from "./actions/filters";
 
 // Libraries for testing purposes
 // import faker from 'faker';
@@ -20,12 +25,17 @@ import NavBar from "./Components/NavBar";
 import PublicHomePage from "./Components/PublicHomePage";
 import Registration from "./Components/Registration";
 
+const store = configureStore();
+const state = store.getState();
 
+store.subscribe(() => {
+  const state = store.getState();
+  console.log(state);
+})
 
 // Stylesheets
 import "./styles/styles.scss";
 import WishList from "./Components/WishList";
-import { getDefaultNormalizer } from "@testing-library/dom";
 
 /*************************************************************
 *
@@ -119,4 +129,10 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+const jsx = (
+  <Provider store={store}>
+      <App />
+  </Provider>
+);
+
+ReactDOM.render(jsx, document.querySelector("#root"));
