@@ -313,3 +313,12 @@ const demoState = {
         "ddc_sort": "891.8536"
     }]
 }
+
+
+// const testUser = {
+//     // name: faker.name.firstName(),
+//     email: 'test@gmail.com', // test user on database
+//     pass: 'pass1234',  // test user pass on database
+//     books: [ 9780316333528, 9781408894620, 9780152547684 ],
+//     isLoggedIn: false
+// }
