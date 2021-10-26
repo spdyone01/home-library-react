@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BookCard from './BookCard';
+import BookList from './BookList';
 
 const LibraryContents = () => {
     return (
         <div className='librarycontents-container'>
-            <div>
-                <BookCard />
-            </div>
+            <BookList />
         </div>
     )
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
-import configureStore from "./store/configureStore";
+import configureStore, { demoState } from "./store/configureStore";
 import "normalize.css/normalize.css";
 // import { Switch } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { addBook } from "./actions/booklist";
 
 // Libraries for testing purposes
 // import faker from 'faker';
@@ -28,6 +29,9 @@ store.subscribe(() => {
   const state = store.getState();
   console.log(state);
 })
+
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
 
 // Stylesheets
 import "./styles/styles.scss";

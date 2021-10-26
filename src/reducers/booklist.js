@@ -1,6 +1,6 @@
 // Booklist Reducer
 
-const booklistReducerDefaultState = [{}];
+const booklistReducerDefaultState = [];
 
 // ADD_BOOK
 // REMOVE_BOOK
@@ -11,6 +11,15 @@ const booklistReducerDefaultState = [{}];
 
 export default (state = booklistReducerDefaultState, action) => {
     switch(action.type){
+        case 'ADD_BOOK':
+            if(state === []){
+                return
+            }else {
+                return [
+                    ...state,
+                    action.book
+                ]
+            }
 
         default:
             return state

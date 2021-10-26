@@ -19,7 +19,7 @@ export default () => {
     return store;
 };
 
-const demoState = {
+export const demoState = {
     user: {},
     filters: {
         query: '',
@@ -47,7 +47,7 @@ const demoState = {
         covers: ['https://covers.openlibrary.org/b/isbn/9780316055086-L.jpg'],
         description: 'A witchers beginning',
         firstPublishDate: 1900,
-        isbns: ['9780316055086'],
+        isbns: ['9780316055386'],
         notes: 'It was a good book',
         publishers: ['Some people'],
         subjects: ['dark', 'magic', 'witches', 'fantasy', 'adventure'],
