@@ -32,6 +32,11 @@ store.subscribe(() => {
 
 store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[1]));
 
 // Stylesheets
 import "./styles/styles.scss";
@@ -78,38 +83,46 @@ class App extends React.Component {
             <Route exact path="/">
               <PublicHomePage user={this.state.user}/>
             </Route>
+
+            <Route exact path="/registration">
+              <Registration />
+            </Route>
+
             <Route exact path="/home">
               <NavBar />
               <SearchBar placeholder='Search Library' />
               <HomePage user={this.state.user}/>
             </Route>
-            <Route exact path="/registration">
-              <Registration />
-            </Route>
+
             <Route exact path="/collections">
               <NavBar />
               <SearchBar placeholder='Search Collections' />
               <Collections />
             </Route>
+
             <Route path="/addbook">
               <NavBar />
               <SearchBar placeholder='Search for a book' />
               <AddBook />
             </Route>
+
             <Route path="/editbook">
               <NavBar />
               <EditBook />
             </Route>
+
             <Route exact path="/wishlist">
               <NavBar />
               <SearchBar placeholder='Search Wishlist' />
               <WishList />
             </Route>
+
             <Route exact path="/favorites">
               <NavBar />
               <SearchBar placeholder='Search Favorites' />
               <Favorites />
             </Route>
+
           </Switch>
           <Footer />
         </Router>

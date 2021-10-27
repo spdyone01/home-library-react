@@ -1,23 +1,26 @@
 .bookcard-container {
-    display: block;
+    display: flex;
     width: 100%;
+    height: 100%;
+    // justify-content: center;
     max-width: 230px;
     max-height: 300px;
-    margin: 1rem;
+    margin: auto;
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: cadetblue -0.4rem 0.3rem 0.35rem;
+    box-shadow: rgb(148, 148, 148) -0.4rem 0.3rem 0.35rem;
     overflow: hidden;
 }
 
 .bookcard-content {
     margin: 0 1rem;
+    width: 100%;
 }
 
 .bookcard-image {
     display: flex;
     max-height: 16rem;
-    max-width: 150px;
+    max-width: clamp(1rem, 30vw, 30rem);
     justify-content: center;
     align-content: center;
     align-self: center;
@@ -26,8 +29,9 @@
 }
 
 .bookcard-title {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 2.1vh, 2rem);
     margin: 0.5rem 0;
+    word-wrap: break-word;
     justify-content: left;
 }
 
