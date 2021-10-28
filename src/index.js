@@ -30,12 +30,8 @@ store.subscribe(() => {
   console.log(state);
 })
 
+// Test books
 store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
 store.dispatch(addBook(demoState.booklist[1]));
 
 // Stylesheets
