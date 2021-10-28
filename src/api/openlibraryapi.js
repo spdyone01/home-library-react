@@ -5,7 +5,7 @@ import { useState } from 'react';
 //const coversBaseAddress =  `https://covers.openlibrary.org/b/  ${key}/${value}-${size}.jpg`;
 
 // Search API for openlibrary.org
-const openLibraryBaseAddress = `http://openlibrary.org/search.json?` // ${searchType}=${getSearchString(searchString)}`;
+const openLibraryBaseAddress = `https://openlibrary.org/search.json?` // ${searchType}=${getSearchString(searchString)}`;
 
 // Search Result function
 
