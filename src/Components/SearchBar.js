@@ -8,7 +8,7 @@ const SearchBar = (props) => {
     return (
         <div className='search-container'>
             <div className='search-bar'>
-                <input type='text'
+                <input id='search-bar' type='text'
                     placeholder={props.placeholder}
                     value={props.filters.text}
                     onChange={(e) => {

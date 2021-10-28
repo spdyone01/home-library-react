@@ -11,7 +11,7 @@ import { addBook } from "./actions/booklist";
 // import faker from 'faker';
 
 // Components for app
-import AddBook from "./Components/AddBook";
+import SearchPage from "./Components/SearchPage";
 import Collections from "./Components/Collections";
 import EditBook from "./Components/EditBook";
 import Favorites from "./Components/Favorites";
@@ -98,8 +98,7 @@ class App extends React.Component {
 
             <Route path="/addbook">
               <NavBar />
-              <SearchBar placeholder='Search for a book' />
-              <AddBook />
+              <SearchPage />
             </Route>
 
             <Route path="/editbook">

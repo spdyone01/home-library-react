@@ -1,5 +1,11 @@
-.addbook-container {
+.search-page-container {
     display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.search-results {
+    display: flex;
     flex-grow: 1;
 }
 
@@ -10,4 +16,5 @@
     align-items: center;
     font-size: 4rem;
     text-align: center;
+    flex-grow: 1;
 }

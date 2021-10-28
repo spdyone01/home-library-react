@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import LibraryContents from './LibraryContents';
 import SearchBar from './SearchBar';
 
-function HomePage(props) {
+function HomePage() {
     return (
         <div className='homepage-container'>
             <LibraryContents />

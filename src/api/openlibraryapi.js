@@ -1,21 +1,21 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 // Cover API for openlibrary.org
 //const coversBaseAddress =  `https://covers.openlibrary.org/b/  ${key}/${value}-${size}.jpg`;
 
 // Search API for openlibrary.org
-//const openLibraryBaseAddress = `http://openlibrary.org/search.json?  ${searchType}=${getSearchString(searchString)}`;
+const openLibraryBaseAddress = `http://openlibrary.org/search.json?` // ${searchType}=${getSearchString(searchString)}`;
 
 // Search Result function
-const [searchResults, setSearchResults] = useState();
 
-const getSearchResults = (query, searchAttributes) => {
+export const getSearchResults = (query, searchAttributes) => {
+    // const [searchResults, setSearchResults] = useState();
     const searchURL = openLibraryBaseAddress + `${searchAttributes.searchType}=${query.replace(' ', '+')}`;
+    console.log(searchURL);
     axios.get(searchURL).then((res) => {
-        setSearchResults(res.data)
+        return res.data
     })
-
-    if (!searchResults) { console.log('error during search') };
 }
 
 // Cover search result function

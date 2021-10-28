@@ -12,9 +12,10 @@
     max-width: 80%;
     border-radius: 100px 100px 100px 100px;
     border-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(1, 0, 0); // Because mozilla wants to highlight the bottom....
     padding: 0 1rem;
     padding-right: 3.6rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 .search-bar img {
