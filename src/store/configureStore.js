@@ -12,7 +12,8 @@ export default () => {
         combineReducers({
             user: userReducer,
             filters: filtersReducer,
-            booklist: booklistReducer
+            booklist: booklistReducer,
+            search: searchReducer
         }),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
