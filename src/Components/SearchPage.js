@@ -1,33 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-// import { updateSearchQuery, updateResults } from "../actions/search";  // These may be deprecated in favor of state in this component
 import { getSearchResults } from '../api/openlibraryapi';
 
 const SearchPage = (props) => {
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [results, setSearchResults] = useState({});
+  const [searchAttributes, setSearchAttributes] = useState({ searchQuery: '', results: {}, loading: false });
+  const changeHandler = (attribute, value) => {setSearchAttributes( prevValues => { return {...prevValues, [attribute]: value }})}
 
   const searchSubmit = async () => {
+    changeHandler('loading', true);
     try{
-      const results = await getSearchResults(searchQuery, { searchType: `${props.filters.sortBy}`});
-      setSearchResults(results);
+      const results = await getSearchResults(searchAttributes.searchQuery, { searchType: `${props.filters.sortBy}`});
+      // setSearchAttributes({ results: {results} });
+      changeHandler('results', results);
       console.log(results);
       // handleSearchResults(results);  // create something that will test for results > 0 and initialize default data for addbook form
-      setSearchQuery('');
+      setSearchAttributes({ searchQuery: '' });
       // create cards with handled search results - use showcase arrows for images (up to 10?)
+      changeHandler('loading', false);
     } catch (error) {
+      changeHandler('loading', false);
       console.log("error", error);
-      setSearchQuery('');
+      setSearchAttributes({ searchQuery: '' });
     }
   }
 
   React.useEffect(() => {
-
+    
   }, []);
   
   let message = 'Search for a book above!';
-  let loading = false;
 
   return (
     <div className='search-page-container'>
@@ -36,15 +38,15 @@ const SearchPage = (props) => {
         <form className='search-form'
           onSubmit={(e) => {
             e.preventDefault();
-            searchSubmit(searchQuery, setSearchQuery);
+            searchSubmit(searchAttributes.searchQuery, setSearchAttributes);
           }}>
           <input
               id='search-query'
               type='text'
               placeholder={'Search for a book'}
-              value={searchQuery}
+              value={searchAttributes.searchQuery}
               onChange={(e) => {
-                setSearchQuery(e.target.value);
+                changeHandler('searchQuery', e.target.value);
               }}
               
           />
@@ -54,12 +56,12 @@ const SearchPage = (props) => {
 
       <div className='search-results'>
         {
-          (0 !== 0) ?
+          (searchAttributes.results === undefined) ?
           <p>Change me later</p>
           :
           <p className='message'>
             {
-              (loading) ?
+              (searchAttributes.loading) ?
                 'Loading...' 
               :
                 message}

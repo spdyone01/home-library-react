@@ -3,7 +3,7 @@ import { createStore, combineReducers } from 'redux';
 // Import Reducers
 import booklistReducer from '../reducers/booklist';
 import filtersReducer from '../reducers/filters';
-import searchReducer from '../reducers/search';
+// import searchReducer from '../reducers/search';  // Deprecate in favor of using state in component of SearchPage
 import userReducer from '../reducers/user';
 
 
@@ -13,8 +13,7 @@ export default () => {
         combineReducers({
             user: userReducer,
             filters: filtersReducer,
-            booklist: booklistReducer,
-            search: searchReducer
+            booklist: booklistReducer
         }),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
