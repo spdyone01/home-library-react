@@ -11,6 +11,7 @@ const SearchPage = (props) => {
   const searchSubmit = async () => {
     try{
       const results = await getSearchResults(searchQuery, { searchType: `${props.filters.sortBy}`});
+      setSearchResults(results);
       console.log(results);
       // handleSearchResults(results);  // create something that will test for results > 0 and initialize default data for addbook form
       setSearchQuery('');
