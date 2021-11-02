@@ -22,6 +22,6 @@ export default (state = booklistReducerDefaultState, action) => {
             }
 
         default:
-            return state
+            return state;
     }
 }

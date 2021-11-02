@@ -8,14 +8,18 @@ const SearchBar = (props) => {
     return (
         <div className='search-container'>
             <div className='search-bar'>
-                <input id='search-bar' type='text'
-                    placeholder={props.placeholder}
-                    value={props.filters.text}
-                    onChange={(e) => {
-                        props.dispatch(setTextFilter(e.target.value));
-                    }}
-                />
-                <img id='search-button' src='../media/book-svgrepo-com.svg' alt='search button' width='20px'></img>
+                <form className='search-form'>
+                    <input
+                        id='search-query'
+                        type='text'
+                        placeholder={props.placeholder}
+                        value={props.filters.text}
+                        onChange={(e) => {
+                            props.dispatch(setTextFilter(e.target.value));
+                        }}
+                    />
+                    <input type='image' id='search-button' src='../media/book-svgrepo-com.svg' alt='search button' width='20px'></input>
+                </form>
             </div>
         </div>
     )

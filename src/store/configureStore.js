@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 
 // Import Reducers
-import filtersReducer from '../reducers/filters';
-import userReducer from '../reducers/user';
 import booklistReducer from '../reducers/booklist';
+import filtersReducer from '../reducers/filters';
+import searchReducer from '../reducers/search';
+import userReducer from '../reducers/user';
 
 
 // Store creation

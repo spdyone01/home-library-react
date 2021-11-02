@@ -33,10 +33,17 @@ store.subscribe(() => {
 // Test books
 store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
 
 // Stylesheets
 import "./styles/styles.scss";
 import WishList from "./Components/WishList";
+import Title from "./Components/Title";
 
 class App extends React.Component {
   constructor(props) {
@@ -85,37 +92,42 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/home">
-              <NavBar />
+              <Title />
               <SearchBar placeholder='Search Library' />
               <HomePage user={this.state.user}/>
+              <NavBar />
             </Route>
 
             <Route exact path="/collections">
-              <NavBar />
+              <Title />
               <SearchBar placeholder='Search Collections' />
               <Collections />
+              <NavBar />
             </Route>
 
             <Route path="/addbook">
-              <NavBar />
+              <Title />
               <SearchPage />
+              <NavBar />
             </Route>
 
             <Route path="/editbook">
-              <NavBar />
               <EditBook />
+              <NavBar />
             </Route>
 
             <Route exact path="/wishlist">
-              <NavBar />
+              <Title />
               <SearchBar placeholder='Search Wishlist' />
               <WishList />
+              <NavBar />
             </Route>
 
             <Route exact path="/favorites">
-              <NavBar />
+              <Title />
               <SearchBar placeholder='Search Favorites' />
               <Favorites />
+              <NavBar />
             </Route>
 
           </Switch>

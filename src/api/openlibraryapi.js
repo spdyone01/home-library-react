@@ -11,11 +11,15 @@ const openLibraryBaseAddress = `https://openlibrary.org/search.json?` // ${searc
 
 export const getSearchResults = (query, searchAttributes) => {
     // const [searchResults, setSearchResults] = useState();
-    const searchURL = openLibraryBaseAddress + `${searchAttributes.searchType}=${query.replace(' ', '+')}`;
-    console.log(searchURL);
-    axios.get(searchURL).then((res) => {
-        return res.data
-    })
+    if(query === ''){
+        return 'Error - Search Field Empty'
+    }else {
+        const searchURL = openLibraryBaseAddress + `${searchAttributes.searchType}=${query.replaceAll(' ', '+')}`;
+        console.log(searchURL);
+        return axios.get(searchURL).then((res) => {
+            return res.data;
+        })
+    }
 }
 
 // Cover search result function
