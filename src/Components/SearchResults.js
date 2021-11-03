@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResultCard from './SearchResultCard';
+import { v4 as uuidv4 } from 'uuid';
 
 const SearchResults = (props) => {
     let showingResults = [((props.page - 1) * 10), ((props.page * 10) - 1)]
@@ -17,7 +18,7 @@ const SearchResults = (props) => {
         return (
             <div>
                 <SearchResultCard
-                    key={result.key}
+                    key={uuidv4()}
                     img={result.cover_i}
                     title={result.title}
                     isbn={result.isbn[0] || '124124'}

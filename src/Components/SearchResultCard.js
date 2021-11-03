@@ -1,8 +1,9 @@
 import React from 'react';
 import { Carousel } from 'react-carousel-minimal';
+import { v4 as uuidv4 } from 'uuid';
 
 const SearchResultCard = (props) => {
-    let images = [{image: '../media/missing-image.svg' , caption: 'Nothing'}]
+    let images = [{ image: '../media/missing-image.svg', caption: 'Nothing' }]
 
     const captionStyle = {
         fontSize: '2em',
@@ -15,8 +16,9 @@ const SearchResultCard = (props) => {
 
     return (
         <div>
-            <div className='bookcard-content'>
+            <div key={uuidv4()} className='bookcard-content'>
                 <Carousel
+                    key={uuidv4()}
                     data={images}
                     width="150px"
                     height="200px"
