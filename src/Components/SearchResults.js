@@ -4,10 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 const SearchResults = (props) => {
     let showingResults = [((props.page - 1) * 10), ((props.page * 10) - 1)]
+
     let paginatedResults = props.results.docs.slice(showingResults[0], showingResults[1] + 1).map((result) => {
         console.log(result)
         if (!result.isbn) {
-            result.isbn = ['no isbn']
+            result.isbn = ['00000000']
         }
         if (!result.author_name) {
             result.author_name = ['no author name']
@@ -15,13 +16,19 @@ const SearchResults = (props) => {
         if (!result.cover_i) {
             result.cover_i = ['../media/missing-image.svg']
         }
+
+        const title = () => {
+            return (result.title.length > 30) ? 
+                result.title.substring(0, 30) + '...' :
+                result.title; 
+        }
+
         return (
             <div>
                 <SearchResultCard
                     key={uuidv4()}
-                    img={result.cover_i}
-                    title={result.title}
-                    isbn={result.isbn[0] || '124124'}
+                    title={title()}
+                    isbns={result.isbn}
                     author={result.author_name[0]}
                 />
                 <button
@@ -39,6 +46,8 @@ const SearchResults = (props) => {
             </div>
         )
     })
+
+    
 
     return (
         <div className='search-results-container'>

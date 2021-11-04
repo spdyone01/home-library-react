@@ -1,19 +1,17 @@
 import axios from 'axios';
-import { useState } from 'react';
 
 // Cover API for openlibrary.org
-//const coversBaseAddress =  `https://covers.openlibrary.org/b/  ${key}/${value}-${size}.jpg`;
+const coversBaseAddress = `https://covers.openlibrary.org/b/`  //${key}/${value}-${size}.jpg;
 
 // Search API for openlibrary.org
 const openLibraryBaseAddress = `https://openlibrary.org/search.json?` // ${searchType}=${getSearchString(searchString)}`;
 
 // Search Result function
-
 export const getSearchResults = (query, searchAttributes) => {
     // const [searchResults, setSearchResults] = useState();
-    if(query === ''){
+    if (query === '') {
         return 'Error - Search Field Empty'
-    }else {
+    } else {
         const searchURL = openLibraryBaseAddress + `${searchAttributes.searchType}=${query.replaceAll(' ', '+')}`;
         console.log(searchURL);
         return axios.get(searchURL).then((res) => {
@@ -24,6 +22,17 @@ export const getSearchResults = (query, searchAttributes) => {
 }
 
 // Cover search result function
-const getCover = (isbn, searchAttributes) => {
-    console.log('getCover')
+export const getCoverURL = (query) => {
+    const key = ['isbn', 'oclc', 'lccn', 'olid', 'id']
+    const size = ['S', 'M', 'L']
+    const searchURL = coversBaseAddress + `isbn/${query}-M.jpg?default=false;`  // the ?default=false return a 404 if no image available
+    return axios.get(searchURL,{ headers: { "content-type": '/image/jpeg'}}).then((res) => {
+        if (res.status !== 404 && res.headers['content-type'] === 'image/jpeg') {
+            
+            return searchURL;
+        } else {
+            return '../media/missing-image.svg'
+        }
+    })
+    // return searchURL;
 }
