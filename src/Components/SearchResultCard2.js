@@ -26,13 +26,13 @@ class SearchResultCard extends React.Component {
                 if (result === '../media/missing-image.svg') {
                     if (placeholderDoesNotExist === true) {
                         placeholderDoesNotExist = false;
-                        let newCover = { image: result, caption: 'test' };
+                        let newCover = { image: result, caption: '' };
                         filteredCovers.push(newCover);
                     }
                 }
                 if (result !== '../media/missing-image.svg') {
                     if (result !== null || result !== undefined) {
-                        let newCover = { image: result, caption: 'test' };
+                        let newCover = { image: result, caption: '' };
                         filteredCovers.push(newCover);
                     }
                 }
@@ -41,6 +41,7 @@ class SearchResultCard extends React.Component {
         }
 
         let newCoverData = checkCoverData(results);
+
         newCoverData = newCoverData.slice(0, 9);
 
 
