@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getSearchResults } from '../api/openlibraryapi';
+import { getSearchResults, getCoverURL } from '../api/openlibraryapi';
 import SearchResults from "./SearchResults";
 import { v4 as uuidv4 } from 'uuid';
+
+// data must be immutable - add searchResultCard props acquisition after results are stored.
 
 const SearchPage = (props) => {
   // Setup State and Handler
@@ -11,14 +13,14 @@ const SearchPage = (props) => {
 
   const searchSubmit = async () => {
     changeHandler('loading', true);
-    changeHandler('results', { numFound: 0 })
+    changeHandler('results', { numFound: 0 });
     try {
       // Try to get data from API, store it, clear search bar and when done change loading to false.
       const results = await getSearchResults(searchAttributes.searchQuery, { searchType: `${props.filters.sortBy}` });
       changeHandler('results', results);
-      changeHandler('searchQuery', '')
+      changeHandler('searchQuery', '');
       changeHandler('loading', false);
-
+      
     } catch (error) {
       changeHandler('loading', false);
       console.log("error", error);
@@ -55,12 +57,11 @@ const SearchPage = (props) => {
         {
           (searchAttributes.results.numFound > 0) ?
             <div className='search-results-cards-container'>
-              <SearchResults
-                key={uuidv4()}
-                results={searchAttributes.results}
-                page={searchAttributes.currentPage}
-              />
               <p>There are {searchAttributes.results.numFound} results</p>
+              <SearchResults
+                results={searchAttributes.results.docs}
+                currentPage={searchAttributes.currentPage}
+              />
             </div>
             :
             <p className='message'>

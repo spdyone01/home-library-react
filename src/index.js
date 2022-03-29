@@ -27,18 +27,18 @@ const state = store.getState();
 
 store.subscribe(() => {
   const state = store.getState();
-  console.log(state);
+  // console.log(state);
 })
 
 // Test books
 store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
 
 // Stylesheets
 import "./styles/styles.scss";

@@ -13,7 +13,7 @@ export const getSearchResults = (query, searchAttributes) => {
         return 'Error - Search Field Empty'
     } else {
         const searchURL = openLibraryBaseAddress + `${searchAttributes.searchType}=${query.replaceAll(' ', '+')}`;
-        console.log(searchURL);
+        // console.log(searchURL);
         return axios.get(searchURL).then((res) => {
             // Add code here to handle 500 error - request failed - internal server error
             return res.data;
@@ -22,17 +22,20 @@ export const getSearchResults = (query, searchAttributes) => {
 }
 
 // Cover search result function
-export const getCoverURL = (query) => {
-    const key = ['isbn', 'oclc', 'lccn', 'olid', 'id']
-    const size = ['S', 'M', 'L']
-    const searchURL = coversBaseAddress + `isbn/${query}-M.jpg?default=false;`  // the ?default=false return a 404 if no image available
-    return axios.get(searchURL,{ headers: { "content-type": '/image/jpeg'}}).then((res) => {
+export const getCoverURL = async (query) => {
+    let successfulImage = false;
+    // const key = ['isbn', 'oclc', 'lccn', 'olid', 'id']
+    // const size = ['S', 'M', 'L']
+    // const searchURL = `https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`  // the ?default=false return a 404 if no image available
+    const resp = await axios.get(`https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`, { headers: { "content-type": '/image/jpeg' } }).then((res) => {
         if (res.status !== 404 && res.headers['content-type'] === 'image/jpeg') {
-            
-            return searchURL;
-        } else {
-            return '../media/missing-image.svg'
+            successfulImage = true;
+            return res.request.responseURL;
         }
-    })
-    // return searchURL;
+    }).catch((err) => console.log(err))
+    if (successfulImage) {
+        return resp;
+    } else {
+        console.log('error - bad image - openlibraryapi.js')
+    }
 }

@@ -1,60 +1,52 @@
-import React from 'react';
-import SearchResultCard from './SearchResultCard';
+import React, { useState } from 'react';
+import SearchResultCard from './SearchResultCard2';
 import { v4 as uuidv4 } from 'uuid';
+import { getCoverURL } from '../api/openlibraryapi';
+
+
 
 const SearchResults = (props) => {
-    let showingResults = [((props.page - 1) * 10), ((props.page * 10) - 1)]
 
-    let paginatedResults = props.results.docs.slice(showingResults[0], showingResults[1] + 1).map((result) => {
-        console.log(result)
-        if (!result.isbn) {
-            result.isbn = ['00000000']
-        }
-        if (!result.author_name) {
-            result.author_name = ['no author name']
-        }
-        if (!result.cover_i) {
-            result.cover_i = ['../media/missing-image.svg']
-        }
+    const showingResults = [((props.currentPage - 1) * 10), ((props.currentPage * 10))]
 
-        const title = () => {
-            return (result.title.length > 30) ? 
-                result.title.substring(0, 30) + '...' :
-                result.title; 
-        }
 
-        return (
-            <div>
-                <SearchResultCard
-                    key={uuidv4()}
-                    title={title()}
-                    isbns={result.isbn}
-                    author={result.author_name[0]}
-                />
-                <button
-                    key={result.key + 'wish'}
-                    id={result.key + 'wish'}
-                >
-                    + Wishlist
-                </button>
-                <button
-                    key={result.key + 'lib'}
-                    id={result.key + 'lib'}
-                >
-                    + Library
-                </button>
-            </div>
-        )
-    })
+    const paginatedResults = props.results.slice(showingResults[0], showingResults[1])
+        .map((result) => {
+            
+            if (!result.authors) { result.authors = [''] };
+            if (!result.isbn) { result.isbn = ['0000000000000'] }
 
-    
-
+            return (
+                <div className='result-card-container' key={uuidv4()}>
+                    <SearchResultCard
+                        key={uuidv4()}
+                        title={result.title}
+                        isbns={result.isbn}
+                        author={result.authors[0]}
+                    />
+                    <p>Add to</p>
+                    <div className='card-buttons'>
+                        <button
+                            key={result.key + 'wish'}
+                            id={result.key + 'wish'}
+                        >
+                            + Wishlist
+                        </button>
+                        <button
+                            key={result.key + 'lib'}
+                            id={result.key + 'lib'}
+                        >
+                            + Library
+                        </button>
+                    </div>
+                </div>
+            )
+        })
     return (
-        <div className='search-results-container'>
+        <div className='results-page-container'>
             {paginatedResults}
-            <p>{props.results.docs[0].isbn[0]}</p>
         </div>
     )
 }
 
-export default SearchResults
+export default SearchResults;
