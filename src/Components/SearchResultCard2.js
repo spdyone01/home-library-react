@@ -113,7 +113,7 @@ class SearchResultCard extends React.Component {
                         <h3 className='carousel-loading'>Loading...</h3>
                 }
                 <h3 className='bookcard-title'>{title(this.props.title, 50)}</h3>
-                <p className='bookcard-author'>{this.props.author}</p>
+                <p className='bookcard-author'>Author: {this.props.author}</p>
                 <p className='bookcard-isbn'>ISBN: {this.props.isbns[0]}</p>
             </div>
         )

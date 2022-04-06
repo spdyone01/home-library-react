@@ -3,47 +3,41 @@ import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import configureStore, { demoState } from "./store/configureStore";
 import "normalize.css/normalize.css";
-// import { Switch } from "react-router";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { addBook } from "./actions/booklist";
 
-// Libraries for testing purposes
-// import faker from 'faker';
-
-// Components for app
-import SearchPage from "./Components/SearchPage";
-import Collections from "./Components/Collections";
-import EditBook from "./Components/EditBook";
-import Favorites from "./Components/Favorites";
-import Footer from "./Components/Footer";
-import HomePage from "./Components/HomePage";
-import NavBar from "./Components/NavBar";
+// Landing Page and Registration
 import PublicHomePage from "./Components/PublicHomePage";
 import Registration from "./Components/Registration";
-import SearchBar from "./Components/SearchBar";
 
+// Header, Navbar, Footer
+import Title from "./Components/Title";
+import SearchBar from "./Components/SearchBar";
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer";
+
+// Routes
+import HomePage from "./Components/HomePage";
+import Collections from "./Components/Collections";
+import SearchPage from "./Components/SearchPage";
+import WishList from "./Components/WishList";
+import Favorites from "./Components/Favorites";
+import EditBook from "./Components/EditBook";
+
+// Stylesheets
+import "./styles/styles.scss";
+
+// Initialize store
 const store = configureStore();
 const state = store.getState();
-
 store.subscribe(() => {
   const state = store.getState();
-  // console.log(state);
 })
 
 // Test books
 store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
-// store.dispatch(addBook(demoState.booklist[0]));
-// store.dispatch(addBook(demoState.booklist[1]));
-// store.dispatch(addBook(demoState.booklist[0]));
-// store.dispatch(addBook(demoState.booklist[1]));
-// store.dispatch(addBook(demoState.booklist[0]));
-// store.dispatch(addBook(demoState.booklist[1]));
 
-// Stylesheets
-import "./styles/styles.scss";
-import WishList from "./Components/WishList";
-import Title from "./Components/Title";
 
 class App extends React.Component {
   constructor(props) {

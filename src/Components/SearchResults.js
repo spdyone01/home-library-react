@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import SearchResultCard from './SearchResultCard2';
 import { v4 as uuidv4 } from 'uuid';
-import { getCoverURL } from '../api/openlibraryapi';
-
-
 
 const SearchResults = (props) => {
 
     const showingResults = [((props.currentPage - 1) * 10), ((props.currentPage * 10))]
 
-
+    // Need to add pages and buttons for results totalling more than 10
     const paginatedResults = props.results.slice(showingResults[0], showingResults[1])
         .map((result) => {
             
-            if (!result.authors) { result.authors = [''] };
+            if (!result.author_name) { result.author_name = [''] };
             if (!result.isbn) { result.isbn = ['0000000000000'] }
 
             return (
@@ -22,7 +19,7 @@ const SearchResults = (props) => {
                         key={uuidv4()}
                         title={result.title}
                         isbns={result.isbn}
-                        author={result.authors[0]}
+                        author={result.author_name[0]}
                     />
                     <p>Add to</p>
                     <div className='card-buttons'>

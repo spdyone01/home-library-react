@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getSearchResults, getCoverURL } from '../api/openlibraryapi';
 import SearchResults from "./SearchResults";
-import { v4 as uuidv4 } from 'uuid';
 
 // data must be immutable - add searchResultCard props acquisition after results are stored.
 
