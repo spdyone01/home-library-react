@@ -51,15 +51,16 @@ class App extends React.Component {
       }
     };
   }
-  
+
   // This is so if the user backs or navs to this page then they'll have to re-login.
   logoutUser = () => {
     this.setState(() => ({
-        user: { 
-            name: '',
-            email: '',
-            books: [],
-            isLoggedIn: false }
+      user: {
+        name: '',
+        email: '',
+        books: [],
+        isLoggedIn: false
+      }
     }))
     /* 
     *
@@ -69,7 +70,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-      this.logoutUser();
+    this.logoutUser();
   }
 
   render() {
@@ -78,7 +79,7 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/">
-              <PublicHomePage user={this.state.user}/>
+              <PublicHomePage user={this.state.user} />
             </Route>
 
             <Route exact path="/registration">
@@ -88,7 +89,7 @@ class App extends React.Component {
             <Route exact path="/home">
               <Title />
               <SearchBar placeholder='Search Library' />
-              <HomePage user={this.state.user}/>
+              <HomePage user={this.state.user} />
               <NavBar />
             </Route>
 
@@ -134,7 +135,7 @@ class App extends React.Component {
 
 const jsx = (
   <Provider store={store}>
-      <App />
+    <App />
   </Provider>
 );
 

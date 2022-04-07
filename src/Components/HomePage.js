@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LibraryContents from './LibraryContents';
-import SearchBar from './SearchBar';
 
 function HomePage() {
     return (
