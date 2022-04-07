@@ -32,9 +32,9 @@ const SearchPage = (props) => {
     <div className='search-page-container'>
       <div className='search-bar'>
         <form className='search-form'
-          onSubmit={async (e) => {
+          onSubmit={(e) => {
             e.preventDefault();
-            await searchSubmit(searchQuery, setSearchAttributes);
+            searchSubmit(searchQuery, setSearchAttributes);
           }}>
           <input
             id='search-query'

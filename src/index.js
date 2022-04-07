@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import configureStore, { demoState } from "./store/configureStore";
-import "normalize.css/normalize.css";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { addBook } from "./actions/booklist";
 
@@ -25,7 +24,8 @@ import Favorites from "./Components/Favorites";
 import EditBook from "./Components/EditBook";
 
 // Stylesheets
-import "./styles/styles.scss";
+import "normalize.css/normalize.css";
+import "./styles/base/index.css";
 
 // Initialize store
 const store = configureStore();
