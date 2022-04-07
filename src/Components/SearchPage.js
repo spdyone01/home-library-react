@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import { getSearchResults, getCoverURL } from '../api/openlibraryapi';
 import SearchResults from "./SearchResults";
 
-// data must be immutable - add searchResultCard props acquisition after results are stored.
-
 const SearchPage = (props) => {
   // Setup State and Handler
-  const [searchAttributes, setSearchAttributes] = useState({ searchQuery: '', results: { docs: [], numFound: 0 }, loading: false, currentPage: 1 });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchAttributes, setSearchAttributes] = useState({ results: { docs: [], numFound: 0 }, loading: false, currentPage: 1 });
   const changeHandler = (attribute, value) => { setSearchAttributes(prevValues => { return { ...prevValues, [attribute]: value } }) }
 
   const searchSubmit = async () => {
@@ -15,15 +14,15 @@ const SearchPage = (props) => {
     changeHandler('results', { numFound: 0 });
     try {
       // Try to get data from API, store it, clear search bar and when done change loading to false.
-      const results = await getSearchResults(searchAttributes.searchQuery, { searchType: `${props.filters.sortBy}` });
+      const results = await getSearchResults(searchQuery, { searchType: `${props.filters.sortBy}` });
+      setSearchQuery('');
       changeHandler('results', results);
-      changeHandler('searchQuery', '');
       changeHandler('loading', false);
       
     } catch (error) {
       changeHandler('loading', false);
       console.log("error", error);
-      setSearchAttributes({ searchQuery: '' });
+      setSearchQuery('');
     }
   }
 
@@ -33,17 +32,17 @@ const SearchPage = (props) => {
     <div className='search-page-container'>
       <div className='search-bar'>
         <form className='search-form'
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            searchSubmit(searchAttributes.searchQuery, setSearchAttributes);
+            await searchSubmit(searchQuery, setSearchAttributes);
           }}>
           <input
             id='search-query'
             type='text'
             placeholder={'Search for a book'}
-            value={searchAttributes.searchQuery}
+            value={searchQuery}
             onChange={(e) => {
-              changeHandler('searchQuery', e.target.value);
+              setSearchQuery(e.target.value);
             }}
           />
           <input type='image' id='search-button' src='../media/book-svgrepo-com.svg' alt='search button' width='20px'></input>
