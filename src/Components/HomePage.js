@@ -4,7 +4,7 @@ import LibraryContents from './LibraryContents';
 
 function HomePage() {
     return (
-        <div className='homepage-container'>
+        <div className='container mx-auto'>
             <LibraryContents />
         </div>
     );

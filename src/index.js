@@ -75,11 +75,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="h-full w-full flex items-center place-content-center">
         <Router>
           <Switch>
             <Route exact path="/">
-              <PublicHomePage user={this.state.user} />
+              <PublicHomePage user={this.state.user} className='bg-white' />
             </Route>
 
             <Route exact path="/registration">

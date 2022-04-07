@@ -19,14 +19,14 @@ class PublicHomePage extends React.Component {
 
     render() {
         return (
-            <div className='public-home-page-container'>
-                <div className='logo-container'>
-                    <img id='logo' src='../media/HomePageLogo.svg' alt='Home Page Logo' width='200'></img>
+            <div className='container'>
+                <div className='flex place-content-center'>
+                    <img className='pr-2' id='logo' src='../media/HomePageLogo.svg' alt='Home Page Logo' width='200'></img>
                 </div>
-                <div className='title'>
+                <div className=''>
                     <h3>My Home Library</h3>
                 </div>
-                <div className='login-form'>
+                <div className=''>
                     <form 
                         id='login' 
                         onSubmit={this.handleLoginSubmit}
@@ -43,17 +43,16 @@ class PublicHomePage extends React.Component {
                             type='password'
                             placeholder='Password'
                         ></input>
-                        <div className='login-button'>
+                        
                             <button
                                 type='submit'
                                 className='btn primary login'
                             >
                                 Login
                             </button>
-                        </div>
                     </form>
                 </div>
-                <div className='reg-message'>
+                <div className=''>
                     <p>Don't have an account?</p>
                     <br />
                     <Link to='registration'>Register</Link>
