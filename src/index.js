@@ -37,6 +37,7 @@ store.subscribe(() => {
 // Test books
 store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[1]));
 
 
 class App extends React.Component {
@@ -75,7 +76,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="h-full w-full flex items-center place-content-center">
+      <div className="flex-column h-full w-full">
         <Router>
           <Switch>
             <Route exact path="/">

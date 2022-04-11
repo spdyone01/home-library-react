@@ -3,7 +3,12 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '2rem'
+      padding: "2rem",
+    },
+    extend: {
+      screens: {
+        xs: "480px",
+      },
     },
   },
   plugins: [require("daisyui")],

@@ -2,10 +2,10 @@ import React from 'react';
 
 const BookCard = (props) => {
         return(
-            <div className='bookcard-container' key={props.isbn}>
+            <div className='card' key={props.isbn}>
                 <div className='bookcard-content'>
                     <img
-                        className='bookcard-image'
+                        className='image'
                         src={props.img}
                         alt={props.title+' image'}
                     />
