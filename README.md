@@ -24,3 +24,9 @@ To see changes to css you will need to open another terminal or CLI and run `npm
 
 ### `npm run build-tailwindcss`
 
+This rebuilds and updates `output.css` in the `/public` folder as you make changes to the css
+
+# Notes
+
+This app was inspired by my wife.  She loves to read and has a huge collection of books.  When she goes to purchase a new book she'll sometimes struggle to remember if she already has a copy or not.  This was made to help remind her of what books she has and also add a fun way to organize her collection.  It also keeps track of what books she's looking to purchase (wishlist) so when she goes to the store she remembers what book she wanted the prior week.  No more missed books!
+
