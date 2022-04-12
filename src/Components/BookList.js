@@ -45,7 +45,7 @@ const BookList = (props) => {
         )
     })
     return (
-        <div className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4'>
+        <div className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4 overflow-y-auto h-min place-items-center px-2'>
             {booklist}
         </div>
     )

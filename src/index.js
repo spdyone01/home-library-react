@@ -36,7 +36,14 @@ store.subscribe(() => {
 
 // Test books
 store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
 
 
@@ -76,7 +83,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="flex-column h-full w-full">
+      <div className="grid grid-flow-row auto-rows-auto h-full w-full">
         <Router>
           <Switch>
             <Route exact path="/">

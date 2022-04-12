@@ -4,7 +4,7 @@ import BookList from './BookList';
 
 const LibraryContents = () => {
     return (
-        <div>
+        <div className=''>
             <BookList />
         </div>
     )

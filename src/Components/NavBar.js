@@ -3,33 +3,23 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div className="navbar">
-      <div className="flex-none">
-        <ul className="menu menu-horizontal p-0">
-          <li className="btn btn-outline">
-            <a>
-              <Link className="hover:bg-blue" to="/home">Home</Link>
-            </a>
+    <div className="w-full place-content-center h-20 relative navbar self-end text-xs mx-0 px-0">
+      <div className="flex-none w-full h-full place-content-center border-2 space-between rounded-xl max-w-2xl">
+        <ul className="menu menu-horizontal m-0 p-0 max-w-lg justify-between text-slate-800 text-center">
+          <li className="hover:bg-slate-500 hover:text-zinc-900 rounded-xl w-1/5">
+              <Link className="w-full place-content-center" to="/home">Home</Link>
           </li>
-          <li>
-            <a>
-              <Link to="/collections">Collections</Link>
-            </a>
+          <li className="hover:bg-slate-500 hover:text-zinc-900 rounded-xl w-1/5">
+              <Link className="w-full place-content-center" to="/collections">Collections</Link>
           </li>
-          <li>
-            <a>
-              <Link to="/addbook">Add Book</Link>
-            </a>
+          <li className="hover:bg-slate-500 hover:text-zinc-900 focus:bg-slate-500 focus:text-zinc-900 active:bg-slate-500 active:text-zinc-900 rounded-xl w-1/5">
+              <Link className="w-full place-content-center" to="/addbook">Add Book</Link>
           </li>
-          <li>
-            <a>
-              <Link to="/wishlist">Wishlist</Link>
-            </a>
+          <li className="hover:bg-slate-500 hover:text-zinc-900 rounded-xl w-1/5">
+              <Link className="w-full place-content-center" to="/wishlist">Wishlist</Link>
           </li>
-          <li>
-            <a>
-              <Link to="/favorites">Favorites</Link>
-            </a>
+          <li className="hover:bg-slate-500 hover:text-zinc-900 rounded-xl w-1/5">
+              <Link className="w-full place-content-center" to="/favorites">Favorites</Link>
           </li>
         </ul>
       </div>

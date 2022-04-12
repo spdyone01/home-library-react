@@ -6,7 +6,7 @@ import { setTextFilter } from "../actions/filters";
 
 const SearchBar = (props) => {
   return (
-    <div className="grow p-2 m-2">
+    <div className="px-10 py-2 mx-0 my-2 w-full">
       <div className="w-full">
         <form className="flex max-w-xl mx-auto px-3">
           <input
