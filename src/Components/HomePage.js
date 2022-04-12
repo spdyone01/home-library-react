@@ -4,7 +4,7 @@ import LibraryContents from './LibraryContents';
 
 function HomePage() {
     return (
-        <div className='mx-auto'>
+        <div className='mx-auto px-8'>
             <LibraryContents />
         </div>
     );
