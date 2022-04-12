@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import configureStore, { demoState } from "./store/configureStore";
-import "normalize.css/normalize.css";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { addBook } from "./actions/booklist";
 
@@ -25,7 +24,8 @@ import Favorites from "./Components/Favorites";
 import EditBook from "./Components/EditBook";
 
 // Stylesheets
-import "./styles/styles.scss";
+import "normalize.css/normalize.css";
+import "./styles/base/index.css";
 
 // Initialize store
 const store = configureStore();
@@ -35,6 +35,14 @@ store.subscribe(() => {
 })
 
 // Test books
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
+store.dispatch(addBook(demoState.booklist[0]));
+store.dispatch(addBook(demoState.booklist[1]));
 store.dispatch(addBook(demoState.booklist[0]));
 store.dispatch(addBook(demoState.booklist[1]));
 
@@ -51,15 +59,16 @@ class App extends React.Component {
       }
     };
   }
-  
+
   // This is so if the user backs or navs to this page then they'll have to re-login.
   logoutUser = () => {
     this.setState(() => ({
-        user: { 
-            name: '',
-            email: '',
-            books: [],
-            isLoggedIn: false }
+      user: {
+        name: '',
+        email: '',
+        books: [],
+        isLoggedIn: false
+      }
     }))
     /* 
     *
@@ -69,16 +78,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-      this.logoutUser();
+    this.logoutUser();
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="grid grid-flow-row auto-rows-auto h-full w-full">
         <Router>
           <Switch>
             <Route exact path="/">
-              <PublicHomePage user={this.state.user}/>
+              <PublicHomePage user={this.state.user} className='bg-white' />
             </Route>
 
             <Route exact path="/registration">
@@ -88,7 +97,7 @@ class App extends React.Component {
             <Route exact path="/home">
               <Title />
               <SearchBar placeholder='Search Library' />
-              <HomePage user={this.state.user}/>
+              <HomePage user={this.state.user} />
               <NavBar />
             </Route>
 
@@ -134,7 +143,7 @@ class App extends React.Component {
 
 const jsx = (
   <Provider store={store}>
-      <App />
+    <App />
   </Provider>
 );
 

@@ -15,8 +15,8 @@ export default (state = userReducerDefaultState, action) => {
     switch(action.type) {
         case 'UPDATE_USER':
             return {
-                username,
-                email
+                // username,
+                // email
             };
         case 'LOGOUT_USER':
             return {};
