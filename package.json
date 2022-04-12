@@ -35,7 +35,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "webpack --watch",
+    "build": "webpack",
     "build2": "react-scripts build",
     "build-tailwindcss": "npx tailwindcss -i ./src/styles/base/index.css -o ./public/output.css --watch",
     "dev-server": "webpack-dev-server",
