@@ -2,7 +2,8 @@ import React from "react";
 
 const BookCard = (props) => {
   return (
-    <div className="card rounded-t-none card-compact shadow-xl mb-2 max-w-[160px] h-[250px] p-0 xs:max-w-[200px] xs:max-h-[300px]" key={props.isbn}>
+    <div className="card card-compact shadow-xl mb-2 pt-2 max-w-[160px] h-[250px] p-0 xs:max-w-[200px] xs:max-h-[300px]" key={props.isbn}>
+        
       <figure>
         <img
           className="image h-32 xs:h-36 w-auto shadow-md m-0.5 shadow-slate-800"
