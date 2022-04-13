@@ -1,8 +1,15 @@
+// React
 import React from "react";
 import ReactDOM from "react-dom";
+
+// Store initialization
 import { Provider } from 'react-redux';
 import configureStore, { demoState } from "./store/configureStore";
+
+// React-Router-DOM
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// For Testing purposes
 import { addBook } from "./actions/booklist";
 
 // Landing Page and Registration
