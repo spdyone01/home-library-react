@@ -38,8 +38,8 @@ const SearchPage = (props) => {
   let message = "Search for a book above!";
 
   return (
-    <div className="px-10 py-2 mx-0 my-2 w-full">
-      <div className="w-full">
+    <div className="row-span-6 px-10 py-2 mx-0 my-2 w-full">
+      <div className="w-full row-span-1">
         <form
           className="flex max-w-xl mx-auto px-3"
           onSubmit={(e) => {
@@ -70,7 +70,7 @@ const SearchPage = (props) => {
 
       <div className="h-0.5 bg-black w-11/12 my-2 mx-auto"></div>
 
-      <div className="search-results h-full">
+      <div className="search-results row-span-5 h-full">
         {searchAttributes.results.numFound > 0 ? (
           <div className="search-results-cards-container">
             <p>There are {searchAttributes.results.numFound} results</p>
@@ -80,7 +80,7 @@ const SearchPage = (props) => {
             />
           </div>
         ) : (
-          <p className="flex place-content-center align-middle h-full">
+          <p className="grid place-content-center h-full">
             {searchAttributes.loading ? "Loading..." : message}
           </p>
         )}
