@@ -38,42 +38,43 @@ const SearchPage = (props) => {
   let message = "Search for a book above!";
 
   return (
-    <div className="row-span-6 px-10 py-2 mx-0 my-2 w-full">
-      <div className="w-full row-span-1">
-        <form
-          className="flex max-w-xl mx-auto px-3"
-          onSubmit={(e) => {
-            e.preventDefault();
-            searchSubmit(searchQuery, setSearchAttributes);
-          }}
-        >
-          <input
-            id="search-query"
-            type="text"
-            placeholder={"Search for a book"}
-            value={searchQuery}
-            onChange={(e) => {
+    <>
+      <div className="row-span-1 overflow-y-auto px-10 mx-0 w-full">
+        <div className="w-full row-span-1">
+          <form
+            className="flex max-w-xl mx-auto px-3 py-0"
+            onSubmit={(e) => {
               e.preventDefault();
-              setSearchQuery(e.target.value);
+              searchSubmit(searchQuery, setSearchAttributes);
             }}
-            className="input grow bg-white input-bordered pr-0 mr-0 border-slate-500 border-2 rounded-r-none border-r-0"
-          />
-          <input
-            type="image"
-            id="search-button"
-            src="../media/book-svgrepo-com.svg"
-            alt="search button"
-            className="w-fill py-2.5 h-12 p-2 ml-0 space-around bg-white rounded-r-lg border-r-2 border-t-2 border-b-2 border-slate-500 hover:bg-slate-400"
-          ></input>
-        </form>
+          >
+            <input
+              id="search-query"
+              type="text"
+              placeholder={"Search for a book"}
+              value={searchQuery}
+              onChange={(e) => {
+                e.preventDefault();
+                setSearchQuery(e.target.value);
+              }}
+              className="input grow bg-white input-bordered pr-0 mr-0 border-slate-500 border-2 rounded-r-none border-r-0 text-slate-700"
+            />
+            <input
+              type="image"
+              id="search-button"
+              src="../media/book-svgrepo-com.svg"
+              alt="search button"
+              className="w-fill py-2.5 h-12 p-2 ml-0 space-around bg-white rounded-r-lg border-r-2 border-t-2 border-b-2 border-slate-500 hover:bg-slate-400"
+            ></input>
+          </form>
+        </div>
+        <div className="h-0.5 bg-black w-11/12 my-2 mx-auto"></div>
       </div>
 
-      <div className="h-0.5 bg-black w-11/12 my-2 mx-auto"></div>
-
-      <div className="search-results row-span-5 h-full">
+      <div className="search-results overflow-y-auto row-span-6 place-items-center px-2 py-0">
         {searchAttributes.results.numFound > 0 ? (
           <div className="search-results-cards-container">
-            <p>There are {searchAttributes.results.numFound} results</p>
+            <p className="text-slate-700">There are {searchAttributes.results.numFound} results</p>
             <SearchResults
               results={searchAttributes.results.docs}
               currentPage={searchAttributes.currentPage}
@@ -85,7 +86,7 @@ const SearchPage = (props) => {
           </p>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

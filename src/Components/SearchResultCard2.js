@@ -11,26 +11,24 @@ function SearchResultCard(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-      const abortController = new AbortController();
-      void async function fetchData() {
-          try {
-            //   let cover = await getCoverURL(props.isbns[0]);
-                const query = props.isbns[0];
-                const url = `https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`;
-                const response = await fetch(url, { signal: abortController.signal });
-              setCoverData(response.url);
-              console.log(response)
-          }
-          catch (err) {
-              console.log('error', err)
-          }
-      }();
-
-      // cancel subscription to useEffect
-      return () => {
-          abortController.abort(); // cancel pending fetch, axios request on component unmount
+    const abortController = new AbortController();
+    void (async function fetchData() {
+      try {
+        //   let cover = await getCoverURL(props.isbns[0]);
+        const query = props.isbns[0];
+        const url = `https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`;
+        const response = await fetch(url, { signal: abortController.signal });
+        setCoverData(response.url);
+        console.log(response);
+      } catch (err) {
+        console.log("error", err);
       }
+    })();
 
+    // cancel subscription to useEffect
+    return () => {
+      abortController.abort(); // cancel pending fetch, axios request on component unmount
+    };
   }, []);
 
   return (
