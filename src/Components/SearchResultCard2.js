@@ -8,19 +8,22 @@ const MISSING_IMAGE = "../media/missing-image.svg";
 
 function SearchResultCard(props) {
   const [coverData, setCoverData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const abortController = new AbortController();
     void (async function fetchData() {
       try {
-        //   let cover = await getCoverURL(props.isbns[0]);
+        // let cover = await getCoverURL(props.isbns[0]);
+        setIsLoading(true);
         const query = props.isbns[0];
         const url = `https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`;
         const response = await fetch(url, { signal: abortController.signal });
         setCoverData(response.url);
-        console.log(response);
+        setIsLoading(false);
+        console.log(response.url);
       } catch (err) {
+        setIsLoading(false);
         console.log("error", err);
       }
     })();
