@@ -67,27 +67,6 @@ class App extends React.Component {
     };
   }
 
-  // This is so if the user backs or navs to this page then they'll have to re-login.
-  logoutUser = () => {
-    this.setState(() => ({
-      user: {
-        name: '',
-        email: '',
-        books: [],
-        isLoggedIn: false
-      }
-    }))
-    /* 
-    *
-    *   Logout of google, disconnect from firebase, etc...
-    * 
-    */
-  }
-
-  componentDidMount() {
-    this.logoutUser();
-  }
-
   render() {
     return (
       <div className="grid grid-flow-row auto-rows-auto h-full w-full">
