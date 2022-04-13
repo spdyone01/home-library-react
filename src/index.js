@@ -35,16 +35,16 @@ store.subscribe(() => {
 })
 
 // Test books
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
-store.dispatch(addBook(demoState.booklist[0]));
-store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
+// store.dispatch(addBook(demoState.booklist[0]));
+// store.dispatch(addBook(demoState.booklist[1]));
 
 
 class App extends React.Component {

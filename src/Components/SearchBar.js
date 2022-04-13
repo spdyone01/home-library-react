@@ -15,6 +15,7 @@ const SearchBar = (props) => {
             placeholder={props.placeholder}
             value={props.filters.text}
             onChange={(e) => {
+              e.preventDefault();
               props.dispatch(setTextFilter(e.target.value));
             }}
             className="input grow bg-white input-bordered pr-0 mr-0 border-slate-500 border-2 rounded-r-none border-r-0"
