@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchResultCard from "./SearchResultCard2";
+import SearchResultCard from "../components/SearchResultCard2";
 import { v4 as uuidv4 } from "uuid";
 
 const SearchResults = (props) => {

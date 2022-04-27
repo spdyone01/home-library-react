@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
 import { getSearchResults, getCoverURL } from "../api/openlibraryapi";
 import SearchResults from "./SearchResults";
 
@@ -90,11 +89,4 @@ const SearchPage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    filters: state.filters,
-    search: state.search,
-  };
-};
-
-export default connect(mapStateToProps)(SearchPage);
+export default SearchPage;

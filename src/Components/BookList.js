@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import BookCard from './BookCard';
 
 const BookList = (props) => {
@@ -51,11 +50,4 @@ const BookList = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        booklist: state.booklist,
-        filters: state.filters
-    }
-}
-
-export default connect(mapStateToProps)(BookList);
+export default BookList;

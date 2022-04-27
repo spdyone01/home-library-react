@@ -1,10 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
-
-// Import Actions
-import { setTextFilter } from "../actions/filters";
 
 const SearchBar = (props) => {
+
+  const setTextFilter = (text) => {
+    console.log(text)
+  }
+  
   return (
     <div className="px-10 py-2 mx-0 my-2 w-full">
       <div className="w-full">
@@ -16,7 +17,7 @@ const SearchBar = (props) => {
             value={props.filters.text}
             onChange={(e) => {
               e.preventDefault();
-              props.dispatch(setTextFilter(e.target.value));
+              setTextFilter(e.target.value);
             }}
             className="input grow bg-white input-bordered pr-0 mr-0 border-slate-500 border-2 rounded-r-none border-r-0"
           />
@@ -33,10 +34,4 @@ const SearchBar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    filters: state.filters,
-  };
-};
-
-export default connect(mapStateToProps)(SearchBar);
+export default SearchBar;
