@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-            <div className='bottom-0 w-full flex place-content-center self-end row-end justify-self-end'>
-                <footer className='p-auto text-center text-slate-500'>Created by Trevor Widdison - WiddiWebs</footer>
-            </div>
+            <footer className='w-full place-content-center fixed bottom-0 left-0 p-0 m-0'>
+                <div className='text-center text-slate-500'>Created by Trevor Widdison - WiddiWebs</div>
+            </footer>
     )
 }
 

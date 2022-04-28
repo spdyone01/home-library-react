@@ -1,10 +1,11 @@
 import React from 'react';
-import LibraryContents from '../components/LibraryContents';
+import Library from '../components/Library';
 
 function HomePage() {
     return (
-        <div className='flex p-0 mx-0 overflow-y-auto w-full place-content-center'>
-            <LibraryContents />
+        <div className='flex-col p-0 mx-0 overflow-y-auto w-full place-content-center'>
+            <p className='text-center'>Homepage Component</p>
+            <Library />
         </div>
     );
 }

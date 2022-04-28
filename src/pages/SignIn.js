@@ -1,70 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { withRouter } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { toast } from 'react-toastify';
+import HomePageLogo from '../../public/media/HomePageLogo.svg';
 
-class PublicHomePage extends React.Component {
-  handleLoginSubmit = (e) => {
+function SignIn() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = formData;
+
+  let navigate = useNavigate();
+
+  let handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    // If valid login then either create user or retrieve user info
-    // if(user) { this.setState(() => { user }) }
-    // else { this.setState((data) => { name, email, books, etc.... })}
-    // After setting user data then change path to home
-    this.props.history.push('/home');
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    // If invalid login then display error message/prompt
+      if (userCredential.user) {
+        navigate('/library');
+      }
+    } catch (error) {
+      toast.error('Invalid User Credentials');
+    }
   };
 
-  render() {
-    return (
-      <div className='container mx-auto px-4'>
-        <div className='flex place-content-center'>
-          <img
-            className='pr-2 '
-            id='logo'
-            src='../media/HomePageLogo.svg'
-            alt='Home Page Logo'
-            width='200'
-          ></img>
-        </div>
-        <div className='max-w-4xl mx-auto'>
-          <form
-            id='login'
-            onSubmit={this.handleLoginSubmit}
-            className='form-control place-items-center'
-          >
-            <input
-              className='input min-w-min w-1/2 max-w-4xl my-1 mt-5'
-              id='email'
-              type='email'
-              placeholder='Username'
-            ></input>
-            <input
-              className='input min-w-min w-1/2 max-w-4xl my-1 mb-3'
-              id='pass'
-              type='password'
-              placeholder='Password'
-            ></input>
-            <button type='submit' className='btn primary login px-6'>
-              Login
-            </button>
-          </form>
-        </div>
-        <div className=''>
-          <p className='flex w-full place-content-center pt-10'>
-            Don't have an account?
-          </p>
-          <br />
-          <Link
-            className='flex w-full place-content-center text-slate-500'
-            to='registration'
-          >
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  return (
+    <div className='container m-0 p-0 pt-10 h-full w-full'>
+      <div className='flex place-content-center'>
+        <img
+          className='pr-2 '
+          id='logo'
+          src={HomePageLogo}
+          alt='Home Page Logo'
+          width='200'
+        ></img>
+      </div>
+      <div className='max-w-4xl mx-auto'>
+        <form
+          id='login'
+          onSubmit={handleLoginSubmit}
+          className='form-control place-items-center'
+        >
+          <input
+            className='input min-w-min w-3/4 max-w-s my-1 mt-5'
+            id='email'
+            type='email'
+            placeholder='Email'
+            onChange={onChange}
+            value={email}
+          ></input>
+          <input
+            className='input min-w-min w-3/4 max-w-s my-1 mb-3'
+            id='password'
+            type='password'
+            placeholder='Password'
+            onChange={onChange}
+            value={password}
+          ></input>
+          <button type='submit' className='btn primary login px-6'>
+            Login
+          </button>
+        </form>
+      </div>
+      <div className='flex-col justify-end mt-14'>
+        <p className='flex place-content-center pt-2 text-slate-600'>
+          Don't have an account?
+        </p>
+        <p className='flex place-content-center w-fit mx-auto'>
+          <Link className='text-slate-500 mt-10' to='/register'>
             Register
           </Link>
-        </div>
+        </p>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default PublicHomePage;
+export default SignIn;
