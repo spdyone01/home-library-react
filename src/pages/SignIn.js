@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import HomePageLogo from '../../public/media/HomePageLogo.svg';
+import OAuth from '../components/OAuth';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -40,14 +41,14 @@ function SignIn() {
   };
 
   return (
-    <div className='container m-0 p-0 pt-10 h-full w-full'>
+    <div className='container m-0 p-0 pt-6 h-full w-full'>
       <div className='flex place-content-center'>
         <img
-          className='pr-2 '
+          className='pr-2'
           id='logo'
           src={HomePageLogo}
           alt='Home Page Logo'
-          width='200'
+          width='180'
         ></img>
       </div>
       <div className='max-w-4xl mx-auto'>
@@ -65,24 +66,33 @@ function SignIn() {
             value={email}
           ></input>
           <input
-            className='input min-w-min w-3/4 max-w-s my-1 mb-3'
+            className='input min-w-min w-3/4 max-w-s my-1'
             id='password'
             type='password'
             placeholder='Password'
             onChange={onChange}
             value={password}
           ></input>
-          <button type='submit' className='btn primary login px-6'>
+
+          <p className='my-3'>
+            <Link className='text-slate-400' to='/forgotpassword'>
+              Forgot Password
+            </Link>
+          </p>
+
+          <button type='submit' className='btn primary login px-6 my-2'>
             Login
           </button>
         </form>
+
+        <OAuth />
       </div>
-      <div className='flex-col justify-end mt-14'>
+      <div className='flex-col justify-end mt-2'>
         <p className='flex place-content-center pt-2 text-slate-600'>
           Don't have an account?
         </p>
         <p className='flex place-content-center w-fit mx-auto'>
-          <Link className='text-slate-500 mt-10' to='/register'>
+          <Link className='text-slate-500 mt-2' to='/register'>
             Register
           </Link>
         </p>

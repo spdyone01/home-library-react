@@ -11,7 +11,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 
 // Notifications
-import { ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Pages
@@ -23,7 +23,8 @@ import Favorites from './pages/Favorites';
 import ForgotPassword from './pages/ForgotPassword';
 import SearchPage from './pages/SearchPage';
 import WishList from './pages/WishList';
-import Library from './components/Library';
+import PageNotFound from './pages/PageNotFound';
+import PrivateRoute from './components/PrivateRoute';
 
 // Utility
 // import EditBook from './Modals/EditBook';
@@ -46,17 +47,24 @@ function App() {
             <Route path='/' element={<SignIn />}></Route>
             <Route path='/register' element={<Register />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
-            <Route path='/homepage' element={<HomePage />} />
-
-            {/* Sign In Required */}
-            <Route path='/:userId/'>
-              <Route path='collections' element={<Collections />} />
-              <Route path='favorites' element={<Favorites />} />
-              <Route path='wishlist' element={<WishList />} />
-              <Route path='search-page' element={<Register />} />
-              <Route path='register' element={<Register />} />
-              <Route path='register' element={<Register />} />
+            {/* Private */}
+            <Route path='/homepage' element={<PrivateRoute />}>
+              <Route path='/homepage' element={<HomePage />} />
             </Route>
+            <Route path='/collections' element={<PrivateRoute />}>
+              <Route path='/collections' element={<Collections />} />
+            </Route>
+            <Route path='/favorites' element={<PrivateRoute />}>
+              <Route path='/favorites' element={<Favorites />} />
+            </Route>
+            <Route path='/wishlist' element={<PrivateRoute />}>
+              <Route path='/wishlist' element={<WishList />} />
+            </Route>
+            <Route path='/search-page' element={<PrivateRoute />}>
+              <Route path='/search-page' element={<SearchPage />} />
+            </Route>
+
+            <Route path='*' element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
       </main>

@@ -7,7 +7,9 @@ import {
 } from 'firebase/auth';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
+import { toast } from 'react-toastify';
 import HomePageLogo from '../../public/media/HomePageLogo.svg';
+import OAuth from '../components/OAuth';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -18,10 +20,18 @@ function Register() {
     btnEnable: false,
   });
 
-  // Add passwordConfirm later
+  // TODO - Add passwordConfirm later
   const { name, email, password, /*passwordConfirm,*/ btnEnable } = formData;
 
   let navigate = useNavigate();
+
+  let clearForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+    });
+  };
 
   let handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -51,8 +61,13 @@ function Register() {
 
       // navigate('/library');
     } catch (error) {
-      console.log(error);
+      if (error.code === 'auth/email-already-in-use') {
+        toast.error('Email in use');
+      } else {
+        toast.error('There was an error registering');
+      }
     }
+    clearForm();
   };
 
   const onChange = (e) => {
@@ -116,6 +131,9 @@ function Register() {
             Sign-Up
           </button>
         </form>
+
+        <OAuth />
+        
       </div>
       <br />
       <p className='flex place-content-center w-fit mx-auto'>
