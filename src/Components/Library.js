@@ -62,7 +62,9 @@ function Library(props) {
     return <Spinner />;
   }
 
-  if (library) {
+  console.log(library)
+
+  if (library.length < 1) {
     return (
       <h3 className='bg-transparent text-center mt-40'>Begin your collection by adding a book!</h3>
     )
