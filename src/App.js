@@ -49,7 +49,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             {/* Private */}
-            <Route path='/home' element={<PrivateRoute />}>
+            <Route path=':id' element={<PrivateRoute />}>
               <Route path='/home' element={<HomePage />} />
             </Route>
             <Route path='/collections' element={<PrivateRoute />}>
