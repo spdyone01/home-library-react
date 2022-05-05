@@ -5,27 +5,27 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Header, Navbar, Footer
-import Title from './components/Title';
-// import SearchBar from './components/SearchBar';
-// import NavBar from './components/NavBar';
-import Footer from './components/Footer';
+import Title from './components/Title.js';
+// import SearchBar from './components/SearchBar.js';
+// import NavBar from './components/NavBar.js';
+import Footer from './components/Footer.js';
 
 // Notifications
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Pages
-import SignIn from './pages/SignIn';
-import Register from './pages/Register';
-import HomePage from './pages/HomePage';
-import Collections from './pages/Collections';
-import Favorites from './pages/Favorites';
-import ForgotPassword from './pages/ForgotPassword';
-import SearchPage from './pages/SearchPage';
-import PageNotFound from './pages/PageNotFound';
-import PrivateRoute from './components/PrivateRoute';
-import Profile from './pages/Profile';
-import WishList from './pages/WishList';
+import SignIn from './pages/SignIn.js';
+import Register from './pages/Register.js';
+import HomePage from './pages/HomePage.js';
+import Collections from './pages/Collections.js';
+import Favorites from './pages/Favorites.js';
+import ForgotPassword from './pages/ForgotPassword.js';
+import SearchPage from './pages/SearchPage.js';
+import PageNotFound from './pages/PageNotFound.js';
+import PrivateRoute from './components/PrivateRoute.js';
+import Profile from './pages/Profile.js';
+import WishList from './pages/WishList.js';
 
 // Utility
 // import EditBook from './Modals/EditBook';
