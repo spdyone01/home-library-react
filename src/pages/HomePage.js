@@ -15,8 +15,7 @@ function HomePage() {
 
             {/** TODO - Figure out a way to keep Navbar and change page below to wishlist, favorites, etc. rather than from App Component */}
             <NavBar query={query} onChange={onChange}/>
-
-            <p className='text-center bg-inherit'>Homepage Component</p>
+            
             { /*TODO  Add a way to route to wishlist, favorites, search page from here */}
             {/* <Routes>
                 <Route path='/library' element={ <Profile />} />

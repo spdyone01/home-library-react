@@ -26,7 +26,7 @@ function SignIn() {
       );
 
       if (userCredential.user) {
-        navigate('/home');
+        navigate('/library');
       }
     } catch (error) {
       toast.error('Invalid User Credentials');

@@ -62,6 +62,12 @@ function Library(props) {
     return <Spinner />;
   }
 
+  if (library) {
+    return (
+      <h3 className='bg-transparent text-center mt-40'>Begin your collection by adding a book!</h3>
+    )
+  }
+
   return (
     <div className='bg-inherit'>
       <BookList filters={props.query} booklist={library} />

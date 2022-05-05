@@ -49,8 +49,8 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             {/* Private */}
-            <Route path='/home' element={<PrivateRoute />}>
-              <Route path='/home' element={<HomePage />} />
+            <Route path='/library' element={<PrivateRoute />}>
+              <Route path='/library' element={<HomePage />} />
             </Route>
             <Route path='/collections' element={<PrivateRoute />}>
               <Route path='/collections' element={<Collections />} />

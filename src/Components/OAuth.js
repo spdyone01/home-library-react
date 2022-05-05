@@ -31,7 +31,7 @@ function OAuth() {
         });
         toast.success('Account Created!');
       }
-      navigate('/home');
+      navigate('/library');
       // toast.success('Sign In Successful!');
     } catch (error) {
       console.log(error);

@@ -56,7 +56,7 @@ function Register() {
 
       // Save user to database
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
-      navigate('/home')
+      navigate('/library')
 
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {

@@ -56,7 +56,7 @@ function NavBar(props) {
           className={`menu menu-compact bg-transparent/50 text-slate-200 dropdown-content mt-3 p-2 shadow rounded-box`}
         >
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/home'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/library'>
               Home
             </Link>
           </li>
