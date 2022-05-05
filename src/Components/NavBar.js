@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import SearchBar from './SearchBar';
 
-function NavBar() {
+function NavBar(props) {
   const navBGColor = 'bg-slate-100';
-  const hoverColor = 'hover:bg-slate-300';
+  const hoverColor = 'hover:bg-transparent/20';
 
   const [userData, setUserData] = useState({
     photoURL: './media/userIcon.svg'
@@ -33,12 +33,12 @@ function NavBar() {
   }
 
   return (
-    <div className={`flex navbar ${navBGColor} rounded-2xl gap-2`}>
-      <div className={`dropdown grow-0 ${navBGColor}`}>
-        <label tabIndex='0' className={`btn btn-ghost btn-circle ${navBGColor} ${hoverColor}`}>
+    <div className={`flex navbar bg-transparent rounded-b-2xl gap-2`}>
+      <div className={`dropdown bg-transparent grow-0 text-slate-700`}>
+        <label tabIndex='0' className={`btn btn-ghost btn-circle bg-transparent ${hoverColor}`}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className={`h-8 w-8 bg-transparent`}
+            className={`h-7 bg-transparent`}
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -53,30 +53,30 @@ function NavBar() {
         </label>
         <ul
           tabIndex='0'
-          className={`menu menu-compact ${navBGColor} dropdown-content mt-3 p-2 shadow rounded-box`}
+          className={`menu menu-compact bg-transparent/50 text-slate-200 dropdown-content mt-3 p-2 shadow rounded-box`}
         >
-          <li>
-            <Link className={`w-full place-content-center ${hoverColor}`} to='/home'>
+          <li className='bg-transparent'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/home'>
               Home
             </Link>
           </li>
-          <li>
-            <Link className='w-full place-content-center' to='/collections'>
+          <li className='bg-transparent'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/collections'>
               Collections
             </Link>
           </li>
-          <li>
-            <Link className='w-full place-content-center' to='/addbook'>
+          <li className='bg-transparent'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/addbook'>
               Add Book
             </Link>
           </li>
-          <li>
-            <Link className='w-full place-content-center' to='/favorites'>
+          <li className='bg-transparent'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/favorites'>
               Favorites
             </Link>
           </li>
-          <li>
-            <Link className='w-full place-content-center' to='/wishlist'>
+          <li className='bg-transparent'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/wishlist'>
               Wishlist
             </Link>
           </li>
@@ -88,10 +88,12 @@ function NavBar() {
           placeholder={'Search your books!'}
           bgColor={navBGColor}
           hoverColor={hoverColor}
+          query={props.query}
+          onChange={props.onChange}
         />
       </div>
 
-      <div className={`dropdown dropdown-end ${navBGColor} pt-1 grow-0`}>
+      <div className={`dropdown dropdown-end bg-transparent pt-1 grow-0 text-slate-700`}>
         <label
           tabIndex='0'
           className={`btn btn-ghost btn-circle avatar ${navBGColor} ${hoverColor}`}
@@ -102,14 +104,14 @@ function NavBar() {
         </label>
         <ul
           tabIndex='0'
-          className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box'
+          className='mt-3 p-2  bg-transparent/10 shadow menu menu-compact dropdown-content bg-base-100 rounded-box'
         >
-          <li>
-            <Link className='w-full place-content-center' to='/profile'>
+          <li className='bg-transparent'>
+            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/profile'>
               Profile
             </Link>
           </li>
-          <li>
+          <li className={`bg-transparent rounded-xl ${hoverColor}`}>
             <a onClick={logout}>Logout</a>
           </li>
         </ul>

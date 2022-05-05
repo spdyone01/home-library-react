@@ -21,9 +21,9 @@ const SearchBar = (props) => {
           id='search-query'
           type='text'
           placeholder={props.placeholder}
-          value={searchQuery}
+          value={props.query.text}
           onChange={(e) => {
-            setTextFilter(e.target.value);
+            props.onChange(e.target.value);
           }}
           className={`input ${searchBarHeight} pr-1 grow input-bordered ${props.bgColor} border-slate-500 border-2 rounded-r-none border-r-0 w-full`}
         />

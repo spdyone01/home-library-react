@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAuth } from 'firebase/auth'
+import { doc, getDoc } from 'firebase/firestore';
 import BookCard from './BookCard';
 
 const BookList = (props) => {
-    console.log(props.filters)
+
     const filteredList = props.booklist.filter((book) => {
         if(book.title){
         return book.title.toLowerCase().includes(props.filters.text.toLowerCase())
@@ -13,26 +15,6 @@ const BookList = (props) => {
         // add collections condition if selected
     })
 
-    // const testisbn = [
-    //     "0575082445",
-    //     "9781473231061",
-    //     "9781478933304", 
-    //     "1473226406",
-    //     "9780316495967",
-    //     "9780316055086",
-    //     "0575077824",
-    //     "0316029181",
-    //     "9780316029186",
-    //     "9781473226401",
-    //     "0575077832",
-    //     "147323106X",
-    //     "9780575082441",
-    //     "9780575077829",
-    //     "0316495964",
-    //     "1478933305",
-    //     "0316055085",
-    //     "9780575077836"
-    //   ]
 
     // sort list depending on selection
     const booklist = filteredList.map((book) => {
@@ -47,7 +29,7 @@ const BookList = (props) => {
         )
     })
     return (
-        <div className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4 overflow-y-auto h-min place-items-center px-2'>
+        <div className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4 bg-transparent overflow-y-auto h-min place-items-center px-2'>
             {booklist}
         </div>
     )
