@@ -17,11 +17,10 @@ function Register() {
     email: '',
     password: '',
     // passwordConfirm: '',
-    btnEnable: false,
   });
 
   // TODO - Add passwordConfirm later
-  const { name, email, password, /*passwordConfirm,*/ btnEnable } = formData;
+  const { name, email, password, /*passwordConfirm,*/ } = formData;
 
   let navigate = useNavigate();
 
@@ -57,9 +56,8 @@ function Register() {
 
       // Save user to database
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
-      console.log(formDataCopy);
+      navigate('/home')
 
-      // navigate('/library');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         toast.error('Email in use');
@@ -85,7 +83,7 @@ function Register() {
           id='logo'
           src={HomePageLogo}
           alt='Home Page Logo'
-          width='180'
+          width='140'
         ></img>
       </div>
       <div className='max-w-4xl mx-auto'>
@@ -133,11 +131,9 @@ function Register() {
         </form>
 
         <OAuth />
-        
       </div>
-      <br />
-      <p className='flex place-content-center w-fit mx-auto'>
-        <Link className='text-slate-500 ' to='/'>
+      <p className='flex place-content-center w-fit mx-auto mt-2'>
+        <Link className='text-slate-500' to='/'>
           Back to Home
         </Link>
       </p>

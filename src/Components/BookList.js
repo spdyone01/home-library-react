@@ -2,9 +2,12 @@ import React from 'react';
 import BookCard from './BookCard';
 
 const BookList = (props) => {
+    console.log(props.filters)
     const filteredList = props.booklist.filter((book) => {
+        if(book.title){
         return book.title.toLowerCase().includes(props.filters.text.toLowerCase())
-        && true
+        }
+        // && true
         // add genre condition
         // add favorites condition if toggled
         // add collections condition if selected

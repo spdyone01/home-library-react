@@ -22,9 +22,10 @@ import Collections from './pages/Collections';
 import Favorites from './pages/Favorites';
 import ForgotPassword from './pages/ForgotPassword';
 import SearchPage from './pages/SearchPage';
-import WishList from './pages/WishList';
 import PageNotFound from './pages/PageNotFound';
 import PrivateRoute from './components/PrivateRoute';
+import Profile from './pages/Profile';
+import WishList from './pages/WishList';
 
 // Utility
 // import EditBook from './Modals/EditBook';
@@ -37,22 +38,25 @@ import './styles/base/index.css';
 function App() {
   return (
     <div className='container h-full w-full overflow-scroll'>
-      <header className='w-full'>
-        <Title />
-      </header>
-      <main className='flex-grow m-0 p-0 pb-10'>
-        <BrowserRouter>
+      <BrowserRouter>
+        <header className='w-full'>
+          <Title />
+        </header>
+        <main className='flex-grow m-0 p-0 pb-10 h-5/6'>
           <Routes>
             {/* Public */}
             <Route path='/' element={<SignIn />}></Route>
             <Route path='/register' element={<Register />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             {/* Private */}
-            <Route path='/homepage' element={<PrivateRoute />}>
-              <Route path='/homepage' element={<HomePage />} />
+            <Route path='/home' element={<PrivateRoute />}>
+              <Route path='/home' element={<HomePage />} />
             </Route>
             <Route path='/collections' element={<PrivateRoute />}>
               <Route path='/collections' element={<Collections />} />
+            </Route>
+            <Route path='/addbook' element={<PrivateRoute />}>
+              <Route path='/addbook' element={<SearchPage />} />
             </Route>
             <Route path='/favorites' element={<PrivateRoute />}>
               <Route path='/favorites' element={<Favorites />} />
@@ -60,15 +64,15 @@ function App() {
             <Route path='/wishlist' element={<PrivateRoute />}>
               <Route path='/wishlist' element={<WishList />} />
             </Route>
-            <Route path='/search-page' element={<PrivateRoute />}>
-              <Route path='/search-page' element={<SearchPage />} />
+            <Route path='/profile' element={<PrivateRoute />}>
+              <Route path='/profile' element={<Profile />} />
             </Route>
 
             <Route path='*' element={<PageNotFound />} />
           </Routes>
-        </BrowserRouter>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
+      </BrowserRouter>
       <ToastContainer />
     </div>
   );

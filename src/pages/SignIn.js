@@ -26,7 +26,7 @@ function SignIn() {
       );
 
       if (userCredential.user) {
-        navigate('/library');
+        navigate('/home');
       }
     } catch (error) {
       toast.error('Invalid User Credentials');
@@ -92,7 +92,7 @@ function SignIn() {
           Don't have an account?
         </p>
         <p className='flex place-content-center w-fit mx-auto'>
-          <Link className='text-slate-500 mt-2' to='/register'>
+          <Link className='text-slate-500 my-2' to='/register'>
             Register
           </Link>
         </p>
