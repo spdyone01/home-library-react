@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Header, Navbar, Footer
 import Title from './components/Title';
-import SearchBar from './components/SearchBar';
-import NavBar from './components/NavBar';
+// import SearchBar from './components/SearchBar';
+// import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 
 // Notifications

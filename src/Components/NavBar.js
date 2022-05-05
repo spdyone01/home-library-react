@@ -17,7 +17,7 @@ function NavBar(props) {
   // Sets userData from auth - if not google then use placeholder image.
   useEffect(() => {
     setUserData(auth.currentUser);
-    if (auth.currentUser.providerData[0].providerId !== 'google.com') {
+    if (auth.currentUser?.providerData[0].providerId !== 'google.com') {
       setUserData((prevState) => ({
         ...prevState,
         photoURL: './media/userIcon.svg',
@@ -27,7 +27,6 @@ function NavBar(props) {
   }, [auth]);
 
   function logout() {
-    // console.log('Logout');
     signOut(auth);
     navigate('/');
   }
@@ -83,13 +82,14 @@ function NavBar(props) {
         </ul>
       </div>
 
-      <div className={`grow ${navBGColor}`}>
+      <div className={`grow bg-transparent`}>
         <SearchBar
           placeholder={'Search your books!'}
           bgColor={navBGColor}
           hoverColor={hoverColor}
           query={props.query}
           onChange={props.onChange}
+          onSubmit={props.onSubmit}
         />
       </div>
 

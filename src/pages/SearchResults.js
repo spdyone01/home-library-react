@@ -17,7 +17,7 @@ const SearchResults = (props) => {
       }
 
       return (
-        <div className="result-card-container" key={uuidv4()}>
+        <div className="result-card-container overflow-y-scroll" key={uuidv4()}>
           <SearchResultCard
             key={uuidv4()}
             title={result.title}

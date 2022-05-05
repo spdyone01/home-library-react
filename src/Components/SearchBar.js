@@ -9,14 +9,13 @@ const SearchBar = (props) => {
     setSearchQuery(text);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log('search submit')
-  }
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  // }
 
   return (
     <div className='mx-auto sm:w-3/4'>
-      <form onSubmit={onSubmit} className={`flex ${props.bgColor}`}>
+      <form onSubmit={props.onSubmit} className={`flex ${props.bgColor}`}>
         <input
           id='search-query'
           type='text'
@@ -25,6 +24,7 @@ const SearchBar = (props) => {
           onChange={(e) => {
             props.onChange(e.target.value);
           }}
+          onSubmit={props.onSubmit}
           className={`input ${searchBarHeight} pr-1 grow input-bordered ${props.bgColor} border-slate-500 border-2 rounded-r-none border-r-0 w-full`}
         />
         <input

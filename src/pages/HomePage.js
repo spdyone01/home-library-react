@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
 import Library from '../components/Library';
 import NavBar from '../components/NavBar';
-import Profile from './Profile';
-import PageNotFound from './PageNotFound';
+// import Profile from './Profile';
+// import PageNotFound from './PageNotFound';
 
 function HomePage() {
     const [query, setQuery] = useState( {text: ''});
@@ -15,7 +15,7 @@ function HomePage() {
 
             {/** TODO - Figure out a way to keep Navbar and change page below to wishlist, favorites, etc. rather than from App Component */}
             <NavBar query={query} onChange={onChange}/>
-            
+
             { /*TODO  Add a way to route to wishlist, favorites, search page from here */}
             {/* <Routes>
                 <Route path='/library' element={ <Profile />} />

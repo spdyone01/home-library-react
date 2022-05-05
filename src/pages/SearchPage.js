@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getSearchResults, getCoverURL } from "../api/openlibraryapi";
-import SearchResults from "./SearchResults";
+import React, { useEffect, useState } from 'react';
+import { getSearchResults, getCoverURL } from '../api/openlibraryapi';
+import SearchResults from './SearchResults';
+import NavBar from '../components/NavBar';
 
 const SearchPage = (props) => {
   // Setup State and Handler
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchAttributes, setSearchAttributes] = useState({
     results: { docs: [], numFound: 0 },
     loading: false,
@@ -16,76 +17,49 @@ const SearchPage = (props) => {
     });
   };
 
-  const searchSubmit = async () => {
-    changeHandler("loading", true);
-    changeHandler("results", { numFound: 0 });
+  const searchSubmit = async (e) => {
+    e.preventDefault();
+    changeHandler('loading', true);
+    changeHandler('results', { numFound: 0 });
     try {
       // Try to get data from API, store it, clear search bar and when done change loading to false.
       const results = await getSearchResults(searchQuery, {
-        searchType: `${props.filters.sortBy}`,
+        searchType: `q`,
       });
-      changeHandler("results", results);
-      changeHandler("loading", false);
-      setSearchQuery("");
+      changeHandler('results', results);
+      changeHandler('loading', false);
+      setSearchQuery('');
     } catch (error) {
-      changeHandler("loading", false);
-      console.log("error", error);
-      setSearchQuery("");
+      changeHandler('loading', false);
+      console.log('error', error);
+      setSearchQuery('');
     }
   };
 
-  let message = "Search for a book above!";
+  let message = 'Search for a book above!';
 
   return (
-    <>
-      <div className="row-span-1 overflow-y-auto px-10 mx-0 w-full">
-        <div className="w-full row-span-1">
-          <form
-            className="flex max-w-xl mx-auto px-3 py-0"
-            onSubmit={(e) => {
-              e.preventDefault();
-              searchSubmit(searchQuery, setSearchAttributes);
-            }}
-          >
-            <input
-              id="search-query"
-              type="text"
-              placeholder={"Search for a book"}
-              value={searchQuery}
-              onChange={(e) => {
-                e.preventDefault();
-                setSearchQuery(e.target.value);
-              }}
-              className="input grow bg-white input-bordered pr-0 mr-0 border-slate-500 border-2 rounded-r-none border-r-0 text-slate-700"
-            />
-            <input
-              type="image"
-              id="search-button"
-              src="../media/book-svgrepo-com.svg"
-              alt="search button"
-              className="w-fill py-2.5 h-12 p-2 ml-0 space-around bg-white rounded-r-lg border-r-2 border-t-2 border-b-2 border-slate-500 hover:bg-slate-400"
-            ></input>
-          </form>
-        </div>
-        <div className="h-0.5 bg-black w-11/12 my-2 mx-auto"></div>
-      </div>
+    <div className='bg-transparent bg-slate-100 rounded-2xl'>
+      <NavBar query={searchQuery} onChange={(e) => setSearchQuery(e)} onSubmit={searchSubmit} />
 
-      <div className="search-results overflow-y-auto row-span-6 place-items-center px-2 py-0">
+      <div className='search-results bg-transparent row-span-6 place-items-center px-2 py-0'>
         {searchAttributes.results.numFound > 0 ? (
-          <div className="search-results-cards-container">
-            <p className="text-slate-700">There are {searchAttributes.results.numFound} results</p>
+          <div className='search-results-cards-container bg-transparent'>
+            <p className='text-slate-700  bg-transparent'>
+              There are {searchAttributes.results.numFound} results
+            </p>
             <SearchResults
               results={searchAttributes.results.docs}
               currentPage={searchAttributes.currentPage}
             />
           </div>
         ) : (
-          <p className="grid place-content-center h-full">
-            {searchAttributes.loading ? "Loading..." : message}
+          <p className='grid place-content-center h-full bg-transparent mt-52 mb-52 '>
+            {searchAttributes.loading ? 'Loading...' : message}
           </p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
