@@ -79,7 +79,7 @@ function Library(props) {
     <div className='bg-inherit'>
       <Routes>
         <Route path='/' element={<BookList filters={props.query} booklist={library} />}></Route>
-        <Route path='/' element={<Collections filters={props.query} booklist={library} />}></Route>
+        <Route path='collections' element={<Collections filters={props.query} booklist={library} />}></Route>
       </Routes>
     </div>
   );

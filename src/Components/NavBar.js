@@ -89,7 +89,10 @@ function NavBar(props) {
           hoverColor={hoverColor}
           query={props.query}
           onChange={props.onChange}
-          onSubmit={props.onSubmit}
+          onSubmit={(e) => {
+            e.preventDefault();
+            props.onSubmit
+          }}
         />
       </div>
 

@@ -17,7 +17,7 @@ const SearchResults = (props) => {
       }
 
       return (
-        <div className="result-card-container overflow-y-scroll" key={uuidv4()}>
+        <div className="result-card-container" key={uuidv4()}>
           <SearchResultCard
             key={uuidv4()}
             title={result.title}
@@ -44,7 +44,7 @@ const SearchResults = (props) => {
         </div>
       );
     });
-  return <div  className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4 overflow-y-auto h-min place-items-center px-2'>{paginatedResults}</div>;
+  return <div className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4 overflow-scroll h-100 place-items-center px-2'>{paginatedResults}</div>;
 };
 
 export default SearchResults;

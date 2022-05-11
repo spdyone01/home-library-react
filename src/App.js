@@ -37,7 +37,7 @@ import './styles/base/index.css';
 
 function App() {
   return (
-    <div className='container h-full w-full overflow-scroll'>
+    <div className='container h-full w-full overflow-hidden'>
       <BrowserRouter>
         <header className='w-full'>
           <Title />

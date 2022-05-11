@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getSearchResults, getCoverURL } from '../api/openlibraryapi';
 import SearchResults from './SearchResults';
 import NavBar from '../components/NavBar';
+import Spinner from '../components/Spinner';
 
 const SearchPage = (props) => {
   // Setup State and Handler
@@ -11,6 +12,7 @@ const SearchPage = (props) => {
     loading: false,
     currentPage: 1,
   });
+  const { results, loading, currentPage } = searchAttributes;
   const changeHandler = (attribute, value) => {
     setSearchAttributes((prevValues) => {
       return { ...prevValues, [attribute]: value };
@@ -42,7 +44,7 @@ const SearchPage = (props) => {
     <div className='bg-transparent bg-slate-100 rounded-2xl'>
       <NavBar query={searchQuery} onChange={(e) => setSearchQuery(e)} onSubmit={searchSubmit} />
 
-      <div className='search-results bg-transparent row-span-6 place-items-center px-2 py-0'>
+      <div className='search-results bg-transparent row-span-6 place-items-center px-2 py-0 min-h-16 max-h-96 overflow-y-scroll'>
         {searchAttributes.results.numFound > 0 ? (
           <div className='search-results-cards-container bg-transparent'>
             <p className='text-slate-700  bg-transparent'>
@@ -54,7 +56,7 @@ const SearchPage = (props) => {
             />
           </div>
         ) : (
-          <p className='grid place-content-center h-full bg-transparent mt-52 mb-52 '>
+          <p className='grid place-content-center h-full bg-transparent'>
             {searchAttributes.loading ? 'Loading...' : message}
           </p>
         )}
