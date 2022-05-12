@@ -14,8 +14,9 @@ export const getSearchResults = (query, searchAttributes) => {
     } else {
         const searchURL = openLibraryBaseAddress + `${searchAttributes.searchType}=${query.replaceAll(' ', '+')}`;
         // console.log(searchURL);
-        return axios.get(searchURL).then((res) => {
-            // Add code here to handle 500 error - request failed - internal server error
+        return axios.get(searchURL)
+        .catch(() => console.clear())
+        .then((res) => {
             return res.data;
         })
     }

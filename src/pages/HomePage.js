@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-// import { Routes, Route } from 'react-router-dom';
 import Library from '../components/Library';
 import NavBar from '../components/NavBar';
-// import Profile from './Profile';
-// import PageNotFound from './PageNotFound';
 
 function HomePage() {
     const [query, setQuery] = useState( {text: ''});

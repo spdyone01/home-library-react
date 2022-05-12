@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
 
 const SearchBar = (props) => {
-  const [searchQuery, setSearchQuery] = useState('');
 
   const searchBarHeight = 'h-10'
-
-  const setTextFilter = (text) => {
-    setSearchQuery(text);
-  };
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  // }
 
   return (
     <div className='mx-auto sm:w-3/4'>
@@ -33,7 +24,7 @@ const SearchBar = (props) => {
           src='../media/book-svgrepo-com.svg'
           alt='search button'
           className={`w-fill ${searchBarHeight} py-1.5  px-2 space-around ${props.bgColor} ${props.hoverColor} rounded-r-lg border-r-2 border-t-2 border-b-2 border-slate-500`}
-        ></input>
+        />
       </form>
     </div>
   );

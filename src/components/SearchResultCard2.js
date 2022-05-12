@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import Carousel from "./Carousel";
 import { v4 as uuidv4 } from "uuid";
 import { shortenString } from "../utility/functions";
-import { getCoverURL } from "../api/openlibraryapi";
+// import { getCoverURL } from "../api/openlibraryapi";
 
 const MISSING_IMAGE = "../media/missing-image.svg";
 
 function SearchResultCard(props) {
   const [coverData, setCoverData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { title, author, isbns } = props
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -21,10 +22,10 @@ function SearchResultCard(props) {
         const response = await fetch(url, { signal: abortController.signal });
         setCoverData(response.url);
         setIsLoading(false);
-        console.log(response.url);
+        // console.log(response.url);
       } catch (err) {
         setIsLoading(false);
-        console.log("error", err);
+        // console.log("error", err);
       }
     })();
 
@@ -41,9 +42,9 @@ function SearchResultCard(props) {
       ) : (
         <h3 className="carousel-loading">Loading...</h3>
       )}
-      <h3 className="bookcard-title">{shortenString(props.title, 50)}</h3>
-      <p className="bookcard-author">Author: {props.author}</p>
-      <p className="bookcard-isbn">ISBN: {props.isbns[0]}</p>
+      <h3 className="bookcard-title">{shortenString(title, 50)}</h3>
+      <p className="bookcard-author">Author: {author}</p>
+      <p className="bookcard-isbn">ISBN: {isbns[0]}</p>
     </div>
   );
 }

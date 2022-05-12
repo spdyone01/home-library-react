@@ -55,44 +55,41 @@ function NavBar(props) {
           className={`menu menu-compact bg-transparent/50 text-slate-200 dropdown-content mt-3 p-2 shadow rounded-box`}
         >
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/library'>
+            <Link className={`w-full place-content-center ${hoverColor}`} to='/library'>
               Home
             </Link>
           </li>
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/collections'>
+            <Link className={`w-full place-content-center ${hoverColor}`} to='/collections'>
               Collections
             </Link>
           </li>
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/addbook'>
+            <Link className={`w-full place-content-center ${hoverColor}`} to='/addbook'>
               Add Book
             </Link>
           </li>
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/favorites'>
+            <Link className={`w-full place-content-center ${hoverColor}`} to='/favorites'>
               Favorites
             </Link>
           </li>
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/wishlist'>
+            <Link className={`w-full place-content-center ${hoverColor}`} to='/wishlist'>
               Wishlist
             </Link>
           </li>
         </ul>
       </div>
 
-      <div className={`grow bg-transparent`}>
+      <div className={`grow ${navBGColor}`}>
         <SearchBar
           placeholder={'Search your books!'}
           bgColor={navBGColor}
           hoverColor={hoverColor}
           query={props.query}
           onChange={props.onChange}
-          onSubmit={(e) => {
-            e.preventDefault();
-            props.onSubmit
-          }}
+          onSubmit={props.onSubmit}
         />
       </div>
 
@@ -107,10 +104,10 @@ function NavBar(props) {
         </label>
         <ul
           tabIndex='0'
-          className='mt-3 p-2  bg-transparent/10 shadow menu menu-compact dropdown-content bg-base-100 rounded-box'
+          className='mt-3 p-2 text-slate-200 bg-transparent/50 shadow menu menu-compact dropdown-content rounded-box'
         >
           <li className='bg-transparent'>
-            <Link className={`w-full place-content-center bg-transparent ${hoverColor}`} to='/profile'>
+            <Link className={`w-full place-content-center ${hoverColor}`} to='/profile'>
               Profile
             </Link>
           </li>
