@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchResultCard from "../components/SearchResultCard2";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from 'react-toastify';
 
 const SearchResults = (props) => {
   const {currentPage, results} = props;
@@ -10,12 +11,12 @@ const SearchResults = (props) => {
 
   {/** TODO - check if it exists and add to users wishlist on firebase */}
   const addToWishlist = async (book) => {
-    console.log(`add ${book.title} to wishlist`)
+    toast.success(`Add ${book.title} to wishlist`)
   }
   
   {/** TODO - check if it exists, open modal or form for user to fill out data and add to users library on firebase */}
   const addToLibrary = async (book) => {
-    console.log(`add ${book.title} to library`)
+    toast.success(`Add ${book.title} to library`)
   }
 
   useEffect(() => {
@@ -26,23 +27,22 @@ const SearchResults = (props) => {
           result.author_name = [""];
         }
         if (!result.isbn) {
-          result.isbn = ["0000000000000"];
+          result.isbn = ['0000000000000'];
         }
   
         return (
-          <div className="result-card-container" key={uuidv4()}>
+          <div className="card border border-slate-500/70 bg-transparent w-full" key={uuidv4()}>
             <SearchResultCard
               key={uuidv4()}
               title={result.title}
               isbns={result.isbn}
               author={result.author_name[0]}
             />
-            <p>Add to</p>
-            <div className="card-buttons">
+            <div className="card-buttons mx-auto mb-4">
               <button
                 key={result.key + "wish"}
                 id={result.key + "wish"}
-                className="btn btn-xs bg-slate-200 text-slate-700"
+                className="btn btn-sm bg-slate-200 text-slate-700 mr-1"
                 onClick={() => addToWishlist(result)}
               >
                 + Wishlist
@@ -50,7 +50,7 @@ const SearchResults = (props) => {
               <button
                 key={result.key + "lib"}
                 id={result.key + "lib"}
-                className="btn btn-xs bg-slate-200 text-slate-700"
+                className="btn btn-sm bg-slate-200 text-slate-700 ml-1"
                 onClick={() => addToLibrary(result)}
               >
                 + Library
@@ -62,8 +62,7 @@ const SearchResults = (props) => {
 
       setPaginatedResults(newPaginatedResults)
   }, [results, currentPage])
-  // Need to add pages and buttons for results totalling more than 10
-  return <div className='grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-4 overflow-scroll h-100 place-items-center px-2'>{paginatedResults}</div>;
+  return <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 place-items-center justify-center px-2 bg-transparent'>{paginatedResults}</div>;
 };
 
 export default SearchResults;

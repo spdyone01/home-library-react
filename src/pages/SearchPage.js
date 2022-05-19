@@ -62,6 +62,7 @@ const SearchPage = (props) => {
   const searchSubmit = async (e) => {
     e.preventDefault();
     changeHandler('loading', true);
+    changeHandler('currentPage', 1);
     changeHandler('results', { docs: [], numFound: 0 });
     try {
       // Try to get data from API, store it, clear search bar and when done change loading to false.
@@ -73,7 +74,6 @@ const SearchPage = (props) => {
       setSearchQuery('');
     } catch (error) {
       changeHandler('loading', false);
-      // console.log('error', error);
       setSearchQuery('');
     }
   };
@@ -97,19 +97,13 @@ const SearchPage = (props) => {
         onSubmit={searchSubmit}
       />
 
-      <div className='search-results bg-transparent row-span-6 place-items-center px-2 py-0 min-h-16 max-h-96 overflow-y-scroll'>
+      <div className='search-results bg-transparent place-items-center px-2 py-0 min-h-16 max-h-96 overflow-y-scroll'>
         {numFound > 0 ? (
           <div className='search-results-cards-container bg-transparent'>
             <p className='text-slate-700  bg-transparent'>
               There are {searchAttributes.results.numFound} results
             </p>
             <SearchResults results={docs} currentPage={currentPage} />
-            {/* <input type='button' className='btn' onClick={changeHandler('currentPage', currentPage - 1)}>
-              Prev Page
-            </input>
-            <input type='button' className='btn' onClick={changeHandler('currentPage', currentPage + 1)}>
-              Next Page
-            </input> */}
           </div>
         ) : (
           <p className='grid place-content-center h-full bg-transparent'>
@@ -122,7 +116,7 @@ const SearchPage = (props) => {
           <button
             id='prevBtn'
             disabled={prevDisabled}
-            className='btn mr-2'
+            className='btn mr-2 text-slate-50'
             onClick={pageDown}
           >
             Prev Page
@@ -130,7 +124,7 @@ const SearchPage = (props) => {
           <button
             id='nextBtn'
             disabled={nextDisabled}
-            className='btn ml-2'
+            className='btn ml-2 text-slate-50'
             onClick={pageUp}
           >
             Next Page
