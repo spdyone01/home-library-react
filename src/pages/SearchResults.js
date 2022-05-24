@@ -36,6 +36,24 @@ const SearchResults = (props) => {
     });
   };
 
+  function clearModalForm() {
+    setFormData({
+      coverData: [{ url: MISSING_IMAGE, text: 'N/A' }],
+      currentSlide: 0,
+      title: 'N/A',
+      authors: ['N/A'],
+      selectedAuthor: 0,
+      description: '',
+      firstPublishData: 1900,
+      favorite: false,
+      isbns: [DEFAULT_ISBN],
+      notes: '',
+      publisher: '',
+      subjects: ['N/A'],
+      collections: [''],
+    });
+  }
+
   const nextImage = async () => {
     const { currentSlide, coverData } = formData;
     if (currentSlide + 1 < coverData.length) {
@@ -46,7 +64,7 @@ const SearchResults = (props) => {
   const prevImage = async () => {
     const { currentSlide, coverData } = formData;
     if (currentSlide + 1 > 1) {
-      changeHandler('currentSlide', currentSlide -1)
+      changeHandler('currentSlide', currentSlide - 1);
     }
   };
 
@@ -130,6 +148,7 @@ const SearchResults = (props) => {
           <label
             htmlFor='book-form-modal'
             className='btn btn-sm btn-circle absolute right-2 top-2'
+            onClick={clearModalForm}
           >
             ✕
           </label>

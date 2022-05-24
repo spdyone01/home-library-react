@@ -97,7 +97,7 @@ function SearchResultCard(props) {
           i < 5 && i < isbns.length && coverData.length < 3;
           i++
         ) {
-          const query = isbns[0]; /* isbn to search */
+          const query = isbns[i]; /* isbn to search */
           if (query != DEFAULT_ISBN) {
             const url = `https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`;
             const response = await fetch(url, {

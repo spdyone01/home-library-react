@@ -16,7 +16,7 @@ function Carousel(props) {
         text: props.coverData[props.currentSlide]?.text,
       });
     }
-  }, [props.coverData]);
+  }, [props.coverData, props.currentSlide]);
 
   return (
     <div className='carousel justify-center h-40 pb-4 relative w-full bg-transparent pt-5'>
