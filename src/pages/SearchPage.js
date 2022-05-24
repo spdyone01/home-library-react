@@ -42,10 +42,11 @@ const SearchPage = (props) => {
 
   // Update next and prev button disabled status
   useEffect(() => {
-
     // Previous page button checks
-    currentPage > 1 ? changeHandler('prevDisabled', false) : changeHandler('prevDisabled', true)
-    
+    currentPage > 1
+      ? changeHandler('prevDisabled', false)
+      : changeHandler('prevDisabled', true);
+
     // Next page button checks
     if (numFound > 10) {
       if (currentPage < pages) {

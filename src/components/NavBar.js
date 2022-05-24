@@ -56,7 +56,7 @@ function NavBar(props) {
         >
           <li className='bg-transparent'>
             <Link className={`w-full place-content-center ${hoverColor}`} to='/library'>
-              Home
+              Library
             </Link>
           </li>
           <li className='bg-transparent'>
