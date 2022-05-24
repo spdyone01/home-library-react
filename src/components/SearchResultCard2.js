@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 // import { getCoverURL } from "../api/openlibraryapi";
 
 const MISSING_IMAGE = '../media/missing-image.svg';
+const DEFAULT_ISBN = '0000000000000';
 
 function SearchResultCard(props) {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +42,6 @@ function SearchResultCard(props) {
     if (found) {
       console.log(newURL + ' exists already');
     }
-    console.log(found);
     return found;
   }
 
@@ -91,46 +91,50 @@ function SearchResultCard(props) {
           setIsLoading(false);
         }
 
-        // Get covers up to a total of 3 covers with isbn searches
-        for (let i = 0; i < isbns.length && coverData.length < 3 && i < 5; i++) {
-          setIsLoading(true);
-          if (isbns[i] != '0000000000000') {
-            const query = isbns[i]; /* isbn to search */
+        // Go over isbns and update cover data for a max of 3
+        for (
+          let i = 0;
+          i < 5 && i < isbns.length && coverData.length < 3;
+          i++
+        ) {
+          const query = isbns[0]; /* isbn to search */
+          if (query != DEFAULT_ISBN) {
             const url = `https://covers.openlibrary.org/b/isbn/${query}-M.jpg?default=false`;
             const response = await fetch(url, {
               signal: abortController.signal,
             });
-            if (response.status === 200) {
-              // If an image has already been found then append to array
-              if (coverData.length > 0) {
-                let newCoverData = coverData;
-                newCoverData.push({ url: response.url, text: title });
-                
-                setCoverResults((prevValues) => {
-                  if (checkIfExists(response.url, prevValues.coverData)) {
-                    return {
-                      ...prevValues,
-                      coverData: newCoverData,
-                      currentSearchIndex: coverResults.currentSearchIndex + 1,
-                    };
-                  } else {
-                    return {
-                      ...prevValues,
-                      currentSearchIndex: coverResults.currentSearchIndex + 1,
-                    };
-                  }
-                });
-              } else {
-                /* If no prior images then replace placeholder image with new data array */
-                setCoverResults((prevValues) => ({
-                  ...prevValues,
-                  coverData: [{ url: response.url, text: title }],
-                  currentSearchIndex: coverResults.currentSearchIndex + 1,
-                }));
-              }
+
+            // If a cover is found, check if it exists in coverData already, if not then add to array
+            if (
+              response.status === 200
+            ) {
+              setCoverResults((prevValues) => {
+                if (checkIfExists(response.url, prevValues.coverData)) {
+                  return {
+                    ...prevValues,
+                    currentSearchIndex: currentSearchIndex + 1,
+                  };
+                } else {
+                  console.log('adding to array');
+                  console.log(response.url);
+                  let newCoverData = prevValues.coverData;
+                  newCoverData.push({ url: response.url, text: title });
+                  return {
+                    ...prevValues,
+                    coverData: newCoverData,
+                    currentSearchIndex: currentSearchIndex + 1,
+                  };
+                }
+              });
+            }
+            // No cover was found, increment currentSearchIndex
+            else {
+              setCoverResults((prevValues) => ({
+                ...prevValues,
+                currentSearchIndex: currentSearchIndex + 1,
+              }));
             }
           }
-          setIsLoading(false);
         }
 
         /*** END TODO */
