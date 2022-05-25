@@ -24,8 +24,6 @@ function Library(props) {
   const { currentUser } = getAuth();
   const { uid, email, displayName } = currentUser;
 
-  const isbn = 9780316055086;
-
   useEffect(() => {
     setLoading(true);
     const getUserData = async () => {
@@ -49,18 +47,7 @@ function Library(props) {
       }
     };
 
-    const setBook = async () => {
-      try {
-
-        const userRef = doc(db, 'users', uid, 'library');
-      } catch (error) {
-        toast.error(error.code);
-        setLoading(false);
-      }
-    };
-
     getUserData();
-    // setBook();
   }, []);
 
   if (loading) {

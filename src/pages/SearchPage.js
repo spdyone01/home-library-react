@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getSearchResults, getCoverURL } from '../api/openlibraryapi';
 import SearchResults from './SearchResults';
 import NavBar from '../components/NavBar';
+import Spinner from '../components/Spinner';
 
 const SearchPage = (props) => {
   // Setup State and Handler
@@ -102,14 +103,14 @@ const SearchPage = (props) => {
         {numFound > 0 ? (
           <div className='search-results-cards-container bg-transparent'>
             <p className='text-slate-700  bg-transparent'>
-              There are {searchAttributes.results.numFound} results
+              There are {searchAttributes.results.numFound > 100 ? 100 : searchAttributes.results.numFound } results
             </p>
             <SearchResults results={docs} currentPage={currentPage} />
           </div>
         ) : (
-          <p className='grid place-content-center h-full bg-transparent'>
-            {loading ? 'Loading...' : message}
-          </p>
+          <div className='grid place-content-center h-full bg-transparent'>
+            {loading ? <Spinner /> : message}
+          </div>
         )}
       </div>
       {numFound > 0 && (

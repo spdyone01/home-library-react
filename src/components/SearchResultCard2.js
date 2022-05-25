@@ -39,9 +39,6 @@ function SearchResultCard(props) {
 
   function checkIfExists(newURL, prevCoverData) {
     const found = prevCoverData.some((cover) => cover.url === newURL);
-    if (found) {
-      console.log(newURL + ' exists already');
-    }
     return found;
   }
 
@@ -115,8 +112,6 @@ function SearchResultCard(props) {
                     currentSearchIndex: currentSearchIndex + 1,
                   };
                 } else {
-                  console.log('adding to array');
-                  console.log(response.url);
                   let newCoverData = prevValues.coverData;
                   newCoverData.push({ url: response.url, text: title });
                   return {
@@ -177,9 +172,16 @@ function SearchResultCard(props) {
         <label
           htmlFor='book-form-modal'
           className='btn btn-sm bg-slate-200 text-slate-700 ml-1'
-          onClick={() => setModalData(result, coverResults)}
+          onClick={() => setModalData(result, coverResults, 'library')}
         >
           + Library
+        </label>
+        <label
+          htmlFor='book-form-modal'
+          className='btn btn-sm bg-slate-200 text-slate-700 ml-1'
+          onClick={() => setModalData(result, coverResults, 'wishlist')}
+        >
+          + Wishlist
         </label>
       </div>
     </div>

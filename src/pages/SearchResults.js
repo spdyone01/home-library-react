@@ -3,6 +3,7 @@ import SearchResultCard from '../components/SearchResultCard2';
 import Carousel from '../components/Carousel';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
+import ModalForm from '../components/ModalForm';
 
 const MISSING_IMAGE = '../media/missing-image.svg';
 const DEFAULT_ISBN = '0000000000000';
@@ -29,6 +30,7 @@ const SearchResults = (props) => {
     publisher: '',
     subjects: ['N/A'],
     collections: [''],
+    selection: '',
   });
   const changeHandler = (attribute, value) => {
     setFormData((prevValues) => {
@@ -51,6 +53,7 @@ const SearchResults = (props) => {
       publisher: '',
       subjects: ['N/A'],
       collections: [''],
+      selection: '',
     });
   }
 
@@ -68,32 +71,17 @@ const SearchResults = (props) => {
     }
   };
 
-  {
-    /** TODO - check if it exists in library first and add to users wishlist on firebase */
-  }
-  const addToWishlist = async (book) => {
-    toast.success(`Add ${book.title} to wishlist`);
-  };
-
-  {
-    /** TODO - check if it exists, open modal or form for user to fill out data and add to users library on firebase */
-  }
-  const addToLibrary = async (book) => {
-    toast.success(`Add ${book.title} to library`);
-  };
-
-  function setModalData(result, coverResults) {
+  function setModalData(result, coverResults, selection) {
     const { title, isbn, author_name, publisher } = result;
     const { coverData, currentSlide } = coverResults;
 
-    console.log(result);
-    console.log(coverResults);
     changeHandler('currentSlide', currentSlide);
     changeHandler('coverData', coverData);
     changeHandler('title', title);
     changeHandler('authors', author_name);
     changeHandler('isbns', isbn);
     changeHandler('publisher', publisher);
+    changeHandler('selection', selection);
   }
 
   useEffect(() => {
@@ -123,16 +111,6 @@ const SearchResults = (props) => {
               result={result}
               setModalData={setModalData}
             />
-            <div className='card-buttons mx-auto mb-4'>
-              <button
-                key={result.key + 'wish'}
-                id={result.key + 'wish'}
-                className='btn btn-sm bg-slate-200 text-slate-700 mr-1'
-                onClick={() => addToWishlist(result)}
-              >
-                + Wishlist
-              </button>
-            </div>
           </div>
         );
       });
@@ -165,26 +143,8 @@ const SearchResults = (props) => {
             <Spinner />
           )}
 
-          <input
-            className='text-slate-700'
-            type={'text'}
-            placeholder={'Title'}
-            value={formData.title}
-            onChange={(e) => changeHandler('title', e.target.value)}
-          />
+          <ModalForm formData={formData} functions={[setFormData, changeHandler]}/>
 
-          {/* cover: MISSING_IMAGE,
-                  title: 'N/A',
-                  authors: ['N/A'],
-                  selectedAuthor: 0,
-                  description: '',
-                  firstPublishData: 1900,
-                  favorite: false,
-                  isbn: '0000000000000',
-                  notes: '',
-                  publisher: '',
-                  subjects: ['N/A'],
-                  collections: [''], */}
         </div>
       </div>
       {paginatedResults}
